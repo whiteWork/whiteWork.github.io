@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float:left;
+}
+
+.fr {
+    float:right;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.box {
+    width: 744px;
+    height: 160px;
+    margin: 50px auto;
+}
+.box .tbody{
+    position: relative;
+    width: 612px;
+    height: 100%;
+    overflow: hidden;
+}
+.box .tbody ul{
+    position:absolute;
+    left: 0;
+    top: 0;
+}
+.box .tbody ul li{
+    height: 160px;
+}
+.box .tbody ul li a{
+    display: block;
+    height: 100%;
+}
+.box .tbody ul li a img{
+    height: 100%;
+}
+.box .thead{
+    position: relative;
+    width: 121px;
+    height: 100%;
+    padding-left: 11px;
+    overflow: hidden;
+}
+.box .thead em{
+    position:absolute;
+    right: 0;
+    top: 0;
+    width: 127px;
+    height: 50px;
+    background: url("../images/lagou_active_bg.png") no-repeat;
+    z-index: 2;
+}
+.box .thead ul{}
+.box .thead ul li{
+    position: relative;
+    width: 121px;
+    height: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.box .thead ul li i{
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    width: 115px;
+    height: 44px;
+    margin-left: -58px;
+    margin-top: -22px;
+    background: url("../images/lagou_unactive_bg.png") no-repeat;
+}
+
+.box .thead ul li.active i{
+    background: none;
+}
+.box .thead ul li img{
+    margin: 4px 0 0 4px;
+}

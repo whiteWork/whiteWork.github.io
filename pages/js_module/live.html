@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/taobao.css"/>
+    <script>
+        window.onload = function() {
+            var oUl = document.getElementsByTagName('ul')[0];
+            var over = 0;
+            var out = 0;
+            var timer = null;
+
+
+            oUl.onmouseover = function (ev) {
+                var oEvt = ev || event;
+                var oSrc = oEvt.srcElement || oEvt.target;
+                over++;
+                console.log("over: " + oSrc.tagName + "-" + over);
+                if (oSrc.tagName == 'IMG') {
+                    //用定时器防止闪屏
+                    timer = setTimeout(function () {
+                        oSrc.parentNode.children[1].style.display = 'block';
+                    }, 50);
+                }
+            };
+
+            oUl.onmouseout = function (ev) {
+                var oEvt = ev || event;
+                var oSrc = oEvt.srcElement || oEvt.target;
+                var toElm = oEvt.toElement || oEvt.relatedTarget;
+                out++;
+                console.log("out: " + oSrc.tagName + "-" + out);
+                //防止抖动
+                clearTimeout(timer);
+                if (oSrc.tagName == 'A') {
+                    oSrc.style.display = 'none';
+                }
+
+                //当鼠标很快的滑动时，鼠标移出事件其实并不是在文字上触发的，而是在图片上触发
+                //所以也要把移出事件的对象是图片的情况下 把文字隐藏掉
+                //但是同时要把因为文字显示出来触发的图片移出事件排除掉
+                //否则会出现闪屏的情况
+                if (oSrc.tagName == 'IMG' && toElm.tagName != "A") {
+                    oSrc.parentNode.children[1].style.display = 'none';
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul class="clearfix">
+            <li class="fl">
+                <img src="../../images/taobao_one.png" alt=""/>
+                <a href="javascript:;">图片一：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_two.png" alt=""/>
+                <a href="javascript:;">图片二：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_three.png" alt=""/>
+                <a href="javascript:;">图片三：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_four.png" alt=""/>
+                <a href="javascript:;">图片四：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_five.png" alt=""/>
+                <a href="javascript:;">图片五：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_six.png" alt=""/>
+                <a href="javascript:;">图片六：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_seven.png" alt=""/>
+                <a href="javascript:;">图片七：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_eight.png" alt=""/>
+                <a href="javascript:;">图片八：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+            <li class="fl">
+                <img src="../../images/taobao_nine.png" alt=""/>
+                <a href="javascript:;">图片九：<br>
+                    双生玫瑰幻润唇膏
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

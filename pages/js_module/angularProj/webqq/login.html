@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="index" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/login.css"/>
+    <script src="../angular/angular.js"></script>
+    <script src="../angular/angular-cookies.js"></script>
+    <script src="js/login.js"></script>
+</head>
+<body ng-controller="main">
+    <div class="box">
+        <div class="face">
+            <div class="pic">
+                <ul class="clearfix">
+                    <li class="fl" ng-repeat="src in arr">
+                        <img ng-src="{{src}}" alt=""/>
+                    </li>
+                </ul>
+            </div>
+            <a href="javascript:;" class="prev">&lrhar;</a>
+            <a href="javascript:;" class="next">&lrhar;</a>
+        </div>
+        <div class="logBox" ng-init="user='yogi';pass='yogi'">
+            用户名：<input type="text" id="user" ng-model="user"/><br>
+            密&nbsp;码：<input type="password" id="pass" ng-model="pass"/><br>
+            <input type="button" value="登录" id="login" ng-click="login()"/>
+            <input type="button" value="注册" id="register" ng-click="register()"/>
+        </div>
+    </div>
+</body>
+</html>

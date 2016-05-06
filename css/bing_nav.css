@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float:left;
+}
+
+.fr {
+    float:right;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.box {
+    width: 736px;
+    height: 252px;
+    background: #101008;
+}
+.box ul{width: 736px;}
+.box ul li{
+    position: relative;
+    width: 180px;
+    height: 80px;
+    background: #FFFFFF;
+    margin: 0 4px 4px 0;
+}
+
+.box ul li a {
+    display: block;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    font: bold 20px/80px " Microsoft YaHei";
+}
+.box ul li a.before-added{
+    background: url("../images/bing_nav_bg.png") no-repeat 40px -150px;
+}
+
+.box ul li.hover a.before-added {
+    background: url("../images/bing_nav_bg.png") no-repeat 40px -62px;
+}
+
+.box ul li a.after-added {
+    background: none;
+    color: #000;
+}
+.box ul li.hover a.after-added {
+    color: #e60012;
+    border: 1px solid #ff8c00;
+    width: 178px;
+    height: 78px;
+    line-height: 78px;
+}
+
+
+.box ul li i.delBtn {
+    display: none;
+    position:absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: url("../images/bing_nav_bg.png") no-repeat 0 0;
+    cursor: pointer;
+}
+
+.box .addBox{
+    display: none;
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 351px;
+    height: 157px;
+    background: #FFFFFF;
+    border: 1px solid #cccccc;
+    padding: 55px 0 0 41px;
+}
+.box .addBox .name{
+    height: 30px;
+    margin-bottom: 10px;
+}
+.box .addBox .name label{
+    height: 100%;
+    line-height: 30px;
+    font:bold 14px " Microsoft YaHei";
+
+}
+.box .addBox .name input{
+    width: 229px;
+    height: 26px;
+    border: 2px solid #eb6a01;
+    outline: none;
+    padding-left: 7px;
+}
+.box .addBox .url{
+    height: 30px;
+    margin-bottom: 20px;
+}
+.box .addBox .url label{
+    height: 100%;
+    line-height: 30px;
+    font:bold 14px " Microsoft YaHei";
+}
+.box .addBox .url input{
+    width: 229px;
+    height: 26px;
+    border: 2px solid #eb6a01;
+    outline: none;
+    padding-left: 7px;
+}
+.box .addBox .btngroup {
+    height: 30px;
+    margin-left: 68px;
+}
+.box .addBox .btngroup #addBtn{
+    width: 70px;
+    height: 100%;
+    border: 1px solid #eb6a01;
+    background: #ff8c00;
+    color: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.box .addBox .btngroup #addBtn:hover{
+    background: #eb6a01;
+}
+.box .addBox .btngroup #cancelBtn{
+    width: 72px;
+    height: 100%;
+    background: #999;
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.box .addBox .btngroup #cancelBtn:hover{
+    background: #666;
+}
+.box .addBox .close_btn{}

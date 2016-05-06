@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float:left;
+}
+
+.fr {
+    float:right;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.fill {
+    display: none;
+    width: 1006px;
+    height: 41px;
+}
+.header{
+    position:fixed;
+    left: 0;
+    top: -50px;
+    width: 1006px;
+    height: 41px;
+    background: #ffffff;
+}
+.header .hr {
+    height: 3px;
+    border-top: 1px solid #aaaaab;
+    border-bottom: 1px solid #aaaaab;
+    background: #e7e7ce;
+}
+
+.header .hr img{
+    margin: 4px 0 0 4px;
+}
+.header .nav-left{
+    padding-left: 139px;
+    height: 36px;
+}
+.header .nav-left a{
+    width: 76px;
+    height: 24px;
+    line-height: 24px;
+    margin-right: 29px;
+    margin-top: 6px;
+    text-align: center;
+    font-size: 12px;
+    color: #4a4252;
+}
+.header .nav-left a:hover{
+    color: #de108c;
+}
+.header .nav-left a.first{
+    background: #de108c;
+    color: #FFFFFF;
+    border-radius: 3px;
+}
+.header .nav-right{
+    padding-right: 13px;
+}
+.header .nav-right a{
+    position: relative;
+    margin-top: 12px;
+    height: 12px;
+    line-height: 12px;
+    font-size: 12px;
+    color: #4a4252;
+}
+
+.header .nav-right a:hover{
+    color: #de108c;
+}
+
+.header .nav-right a.online{    
+    padding-right: 14px;
+    margin-right: 47px;
+}
+.header .nav-right a.online i{
+    position:absolute;
+    right: 0;
+    top: 6px;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: #a0a0a4;
+}
+
+.header .nav-right a.bag{
+    padding-left: 20px;
+    padding-right: 22px;
+    background: url("../images/wp_bag.png") no-repeat;
+}
+.header .nav-right a span{
+    position:absolute;
+    right: 0;
+    top: -2px;
+    width: 16px;
+    height: 17px;
+    line-height: 17px;
+    text-align: center;
+    background: #808080;
+    border-radius: 2px;
+    color: #FFFFFF;
+}
+.header .nav-right a span i{
+    position:absolute;
+    left: -4px;
+    top: 7px;
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;
+    border-right-color: #808080;
+}

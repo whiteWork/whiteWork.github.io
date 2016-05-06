@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/nowtv.css"/>
+    <script src="../../js/AddMouseWheel.js"></script>
+    <script>
+        window.onload = function() {
+            var aHead = document.getElementsByClassName('thead')[0].children;
+            var aBody = document.getElementsByClassName('tbody')[0].children;
+            var timerRoll = null;
+
+            //添加拖拽、点击、滚轮等事件处理函数
+            for (var i = 0; i < aHead.length; i++) {
+                aHead[i].index = i;
+                aHead[i].onclick = function () {
+                    for (var i = 0; i < aHead.length; i++) {
+                        aHead[i].className = aHead[i].className.replace(" active", "");
+                        aBody[i].className = aBody[i].className.replace(" cur", "");
+                    }
+                    this.className += ' active';
+                    aBody[this.index].className += ' cur';
+                }
+
+                var oBar = aBody[i].getElementsByClassName('roller')[0].children[0];
+                var oUp = aBody[i].getElementsByClassName('roller')[0].children[1];
+                var oDown = aBody[i].getElementsByClassName('roller')[0].children[2];
+
+                oBar.onmousedown = function (ev) {
+                    var _this = this;
+                    var oEvt = ev || event;
+                    var disY = oEvt.clientY - _this.offsetTop;
+
+                    document.onmousemove = function (ev) {
+                        var oEvt = ev || event;
+                        var top = oEvt.clientY - disY;
+
+                        setPos(_this,top);
+                    };
+
+                    document.onmouseup = function () {
+                        document.onmousemove = document.onmouseup = null;
+                        _this.releaseCapture && _this.releaseCapture();
+                    };
+
+                    _this.setCapture && _this.setCapture();
+                    return false;
+                };
+                oUp.onmousedown = function () {
+                    var _this = this;
+                    var oBar = _this.parentNode.children[0];
+                    timerRoll = setInterval(function () {
+                        var top = oBar.offsetTop;
+                        top -= 3;
+                        setPos(oBar,top);
+                    },30);
+                };
+                oUp.onmouseup = oUp.onmouseout = function () {
+                    clearInterval(timerRoll);
+                };
+
+                oUp.onclick = function () {
+                    var _this = this;
+                    var oBar = _this.parentNode.children[0];
+                    var top = oBar.offsetTop;
+                    top -= 3;
+                    setPos(oBar,top);
+                };
+
+                oDown.onmousedown = function () {
+                    var _this = this;
+                    var oBar = _this.parentNode.children[0];
+                    timerRoll = setInterval(function () {
+                        var top = oBar.offsetTop;
+                        top += 3;
+                        setPos(oBar,top);
+                    },30);
+                };
+                oDown.onmouseup = oUp.onmouseout = function () {
+                    clearInterval(timerRoll);
+                };
+
+                oDown.onclick = function () {
+                    var _this = this;
+                    var oBar = _this.parentNode.children[0];
+                    var top = oBar.offsetTop;
+                    top += 3;
+                    setPos(oBar,top);
+                };
+
+                addMouseWheel(aBody[i], function(obj, down) {
+                    var oBar = obj.getElementsByClassName('bar')[0];
+                    var top = oBar.offsetTop;
+
+                    if (down) {
+                        top += 3;
+                    } else {
+                        top -= 3;
+                    }
+
+                    setPos(oBar,top);
+                });
+            }
+
+            function setPos(_this, top) {
+                var maxTop = _this.parentNode.offsetHeight
+                        - _this.offsetHeight -_this.parentNode.children[1].offsetHeight
+                        - _this.parentNode.children[2].offsetHeight + 2;
+                var oContent = _this.parentNode.parentNode;
+                var oUl = oContent.children[0];
+
+
+                if (top < 0) top = 0;
+                if (top > maxTop) top = maxTop;
+                _this.style.top = top + 'px';
+
+                var scale = top / maxTop;
+                oUl.style.top = scale * (oContent.offsetHeight - oUl.offsetHeight) + 'px';
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="playlist">
+            <h3><img src="../../images/nowtv_title_bg.png" alt=""/></h3>
+            <div class="thead clearfix">
+                <i class="fl active">所有频道</i>
+                <i class="fl">最爱频道</i>
+            </div>
+            <div class="tbody">
+                <div class="tab-item cur">
+                    <div class="tools clearfix">
+                        <div class="select fl">
+                            101 now101台
+                            <div class="drop">
+                                <div class="tri_down"></div>
+                            </div>
+                        </div>
+                        <div class="search fl clearfix">
+                            <i class="fl"></i>
+                            <input type="text" class="fl"/>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li class="first">
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20 Top
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20
+                            </li>
+                            <li>
+                                5:30 am&nbsp;&nbsp;特约：维他命师#20 Bottom
+                            </li>
+                        </ul>
+                        <div class="roller">
+                            <div class="bar"></div>
+                            <div class="arrow-up"></div>
+                            <div class="arrow-down"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-item favorite">
+                    <div class="tools clearfix">
+                        <div class="select fl">
+                            现在播放
+                            <div class="drop">
+                                <div class="tri_down"></div>
+                            </div>
+                        </div>
+                        <div class="save fl clearfix">
+                            储存
+                        </div>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <li>
+                                527 亚洲美食台 Top
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台
+                            </li>
+                            <li>
+                                527 亚洲美食台 Bottom
+                            </li>
+                        </ul>
+                        <div class="roller">
+                            <div class="bar"></div>
+                            <div class="arrow-up"></div>
+                            <div class="arrow-down"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美团首页</title>
+    <link href="css/iconfont.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            font: 12px 'Hiragino Sans GB', 'WenQuanYi Micro Hei', tahoma, sans-serif;;
+        }
+
+
+        .header_wrapper {
+            width: 100%;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .header {
+            width: 1170px;
+            height: 31px;
+            margin: 0 auto;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .header  a {
+            position: relative;
+            height: 12px;
+            line-height: 12px;
+            color: #666;
+            padding: 10px 0  8px;
+            margin-right: 10px;
+        }
+
+        .header .login .favorite {
+            margin-right: 18px;
+        }
+        .header .login .register {
+            padding-right: 11px;
+        }
+
+        .header .login .vertical-bar {
+            position:absolute;
+            right: 0;
+            top: 8px;
+            width: 1px;
+            height: 14px;
+            background: #dddddd;
+        }
+
+
+
+        .header .login .entry {
+            color: #f76120;
+            margin-right: 14px;
+        }
+
+        .header .login .phone {
+            padding-left: 21px;
+        }
+        .header .login .phone i.F-glob-phone {
+            position:absolute;
+            left: 7px;
+            top: 10px;
+        }
+
+        .header .login .phone i.tri_down {
+            position:absolute;
+            right: -13px;
+            top: 15px;
+            width: 0;
+            height: 0;
+            border: 3px solid transparent;
+            border-top-color: #999999;
+        }
+
+        .header .my-info a {
+            padding-left: 12px;
+            padding-right: 22px;
+            margin-right: 0;
+        }
+
+        .header .my-info a.my-order {
+            padding-left: 8px;
+            padding-right: 9px;
+        }
+
+        .header .my-info a.more i.tri_down {
+            position:absolute;
+            right: 8px;
+            top: 15px;
+            width: 0;
+            height: 0;
+            border: 3px solid transparent;
+            border-top-color: #999999;
+        }
+
+        .header .my-info a i.tri_down {
+            position:absolute;
+            right: 9px;
+            top: 15px;
+            width: 0;
+            height: 0;
+            border: 3px solid transparent;
+            border-top-color: #999999;
+        }
+
+        .header .my-info  .vertical-bar {
+            position:absolute;
+            right: 0;
+            top: 10px;
+            width: 1px;
+            height: 12px;
+            background: #dddddd;
+        }
+
+        .header .my-info .cart {
+            padding-left: 34px;
+        }
+
+        .header .my-info .cart .F-glob-cart {
+            position:absolute;
+            left: 12px;
+            top: 10px;
+        }
+
+        .header .my-info .more {
+            padding-right: 21px;
+        }
+
+        .header .my-info .cart span {
+            color: #f76120;
+            margin: 0.1em;
+        }
+        .content_wrapper {
+            width: 1170px;
+            margin: 0 auto;
+        }
+
+        .banner {
+            width: 100%;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .banner a {
+            position: relative;
+            display: block;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            background: #cff2f8;
+        }
+
+        .banner a img {
+
+        }
+        
+        .banner a i.close_btn {
+            position: absolute;
+            right: 9px;
+            top: 8px;
+            width: 11px;
+            height: 11px;
+            background: url("images/close_btn.png") no-repeat;
+        }
+
+        .banner a  span {
+            position:absolute;
+            right: 4px;
+            top: 44px;
+            width: 31px;
+            height: 13px;
+            background: #68797c;
+            border-radius: 6px;
+        }
+
+        .banner a span i.gray {
+            position:absolute;
+            left: 6px;
+            top: 3px;
+            width: 7px;
+            height: 7px;
+            background: #cccccc;
+            border-radius: 3px;
+        }
+
+        .banner a span i.green {
+            position:absolute;
+            left: 18px;
+            top: 3px;
+            width: 7px;
+            height: 7px;
+            background: #2bb8aa;
+            border-radius: 3px;
+        }
+
+        .search {
+            width: 100%;
+            height: 105px;
+            margin: 0 auto;
+        }
+
+        .search .logo {
+            width: 82px;
+            height: 54px;
+            margin-top: 21px;
+            background: url("images/logo.png") no-repeat 0 -896px;
+        }
+
+        .search .city h3 {
+            font-size: 18px;
+            height: 27px;
+        }
+
+        .search .city .switch {
+            /*display: block;*/
+            /*line-height: 18px;*/
+            border: 1px solid #eeeeee;
+            color: #999;
+            background: #fff;
+            padding: 2px 5px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .search .city div {
+            width: 123px;
+            margin: 24px 0 0 10px;
+        }
+
+        .search .search_box {
+            width: 490px;
+            height: 72px;
+            margin: 21px 0 0 120px;
+        }
+
+        .search .search_box .border {
+            width: 421px;
+            height: 38px;
+            border: 2px solid #2db8ad;
+
+        }
+
+        .search .search_box .search_bar a{
+            position: relative;
+            width: 28px;
+            height: 32px;
+            line-height: 32px;
+            padding: 3px 20px 3px 14px;
+            font-size: 14px;
+            color: #666;
+            border-right: 1px solid #ccc;
+
+        }
+
+        .search .search_box .search_bar a i.tri_down {
+            position:absolute;
+            right: 7px;
+            top: 17px;
+            width: 0;
+            height: 0;
+            border: 3px solid transparent;
+            border-top-color: #666;
+        }
+
+        .search_box .border input {
+            width: 348px;
+            height: 26px;
+            padding: 6px 5px;
+            border: none;
+            outline: none;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .search_box .search_bar .go {
+            width: 65px;
+            height: 42px;
+            line-height: 42px;
+            background: #2bb8aa;
+            color: #fff;
+            font-size: 14px;
+            border: none;
+            text-align: center;
+        }
+
+        .search_box .rec a {
+            height: 18px;
+            padding-right: 20px;
+            color: #666;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .search_box .rec a:hover {
+            color: #2bb8aa;
+            text-decoration: underline;
+        }
+
+        .search .refund {
+            width: 192px;
+            height: 42px;
+            margin-top: 29px;
+            /*border: 1px solid red;*/
+        }
+
+        .search .refund a {
+            height: 42px;
+            margin-left: 20px;
+            color: #999;
+        }
+
+        .search .refund a i {
+            display: block;
+            width: 36px;
+            height: 24px;
+            line-height: 1;
+            font-size: 24px;
+            text-align: center;
+            margin: 0 auto;
+            zoom: 1;
+        }
+
+        .all_kinds {
+            width: 245px;
+            height: 517px;
+            /*border: 1px solid #ccc;*/
+            border-top: none;
+        }
+
+        .top_nav {
+            width: 100%;
+            height: 40px;
+        }
+
+        .top_nav .all_kinds .green_bg{
+            width: 231px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 15px;
+            color: #fff;
+            font-size: 16px;
+            background: url("images/logo.png") no-repeat 0 -31px;
+        }
+
+        .top_nav_item {
+            width: 924px;
+            height: 40px;
+            background: #2bb8aa;
+        }
+
+        .top_nav_item a {
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #fff;
+            font-weight: bold;
+            padding: 0 18px;
+        }
+
+        .top_nav_item a:hover {
+            background: #00c3b0;
+        }
+
+        .top_nav .all_kinds .sidebar {
+            position:absolute;
+            left: 0;
+            top: 40px;
+            width: 245px;
+            height: 477px;
+            border: 1px solid #eee;
+            border-top: none;
+        }
+
+        .top_nav .all_kinds {
+            position: relative;
+        }
+
+        .sidebar dl {
+            position: relative;
+            width: 203px;
+            height: 43px;
+            padding: 5px 16px 4px 5px;
+            margin: 0 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar dl i {
+            position:absolute;
+            right: 2px;
+            top: 20px;
+            color: #e0e0e0;
+        }
+
+        .sidebar dl.last {
+            border-bottom: none;
+        }
+
+        .sidebar dl dt a {
+            width: 95px;
+            height: 43px;
+            line-height: 43px;
+            color: #444;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .sidebar dl dd a {
+            height: 42px;
+            line-height: 42px;
+            color: #999;
+            margin-right: 6px;
+        }
+
+        .middle_content {
+            width: 906px;
+            height: 478px;
+            margin: 0 0 30px 264px;
+        }
+
+        .middle_content .nav_img {
+            width: 689px;
+            height: 477px;
+            border-bottom: 1px solid #eee;
+            margin: 0 18px 14px 0;
+        }
+
+        .nav_img {
+            width: 689px;
+            margin-right: 18px;
+        }
+
+        .nav_img dl {
+            width: 100%;
+            height: 24px;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nav_img dl dt {
+            position: relative;
+            width: 48px;
+            height: 24px;
+            line-height: 18px;
+            margin-right: 20px;
+            padding-left: 20px;
+            color: #999;
+
+        }
+
+        .nav_img dl dt i {
+            position:absolute;
+            left: 0;
+            top: 0;
+            font-size: 16px;
+        }
+
+        .nav_img dl dd {
+
+        }
+
+        .nav_img dl dd a{
+            height: 24px;
+            line-height: 24px;
+            margin-right: 20px;
+            color: #666;
+        }
+
+        .nav_img dl dd a.orange {
+            color: #f76120;
+        }
+
+        .nav_img .more {
+            line-height: 20px;
+            color: #666;
+            margin: 1px 0;
+            border: 1px solid #eee;
+            padding: 0 13px 0 5px;
+        }
+
+
+
+        .hot_img_left {
+            width: 333px;
+            padding:  10px 11px 0 0px;
+            border-right: 1px solid #eee;
+        }
+
+        .hot_img_right {
+            width: 333px;
+            padding:  10px 0 0 11px;
+            border-right: none;
+        }
+
+        .nav_img .hot_img a {
+            position: relative;
+            display: block;
+        }
+
+        .nav_img .hot_img a .discount{
+            position:absolute;
+            right: 20px;
+            top: 0;
+            width: 28px;
+            height: 37px;
+            line-height: 37px;
+            padding: 16px 22px 0 12px;
+            background: url("images/logo.png") no-repeat 0 -830px;
+            color: #fff;
+            font-weight: bold;
+            font: 18px arial,sans-serif;;
+        }
+
+        .hot_img {
+            width: 689px;
+            height: 317px;
+        }
+
+        .hot_img .desc .title {
+            width: 214px;
+            height: 43px;
+            padding-right: 10px;
+            border-right: 1px solid #eee;
+            margin: 15px 0 10px;
+        }
+
+        .hot_img .desc .title h3 a {
+            height: 21px;
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .hot_img .desc .title h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .hot_img .desc .title p {
+            height: 18px;
+            width: 214px;
+            color: #999;
+            margin-top: 4px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .hot_img .desc .price {
+            height: 70px;
+            line-height: 70px;
+            font-size: 30px;
+            color: #f76120;
+            font-family: arial,sans-serif;
+        }
+
+        .qrcode {
+            border-right: 1px solid #eee;
+            border-left: 1px solid #eee;
+        }
+
+
+        .middle_content .super_tuesday {
+            width: 197px;
+            height: 318px;
+            border: 1px solid #eeeeee;
+        }
+
+        .super_tuesday h2 {
+            margin-top: 51px;
+            height: 36px;
+            line-height: 36px;
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+
+        .super_tuesday p {
+            height: 21px;
+            line-height: 21px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+
+        }
+
+        .super_tuesday img {
+            margin: 5px 0 0 10px;
+        }
+
+        .famous_shop {
+            width: 100%;
+            height: 310px;
+            margin-bottom: 30px;
+        }
+
+        .famous_shop .shop {
+            width: 953px;
+            height: 100%;
+        }
+
+        .shop .title {
+            height: 48px;
+        }
+
+        .shop .title h3 {
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            color: #666;
+        }
+
+        .shop .title h3 span {
+            width: 37px;
+            height: 40px;
+            background: url("images/famous_shop.png") no-repeat 0 -321px;
+        }
+
+        .famous_shop .item_list {
+            width: 951px;
+            height: 260px;
+            border: 1px solid #eeeeee;
+        }
+
+        .famous_shop .item {
+            width: 237px;
+            height: 260px;
+            border-right: 1px solid #eee;
+        }
+        .famous_shop .item_list .item img {
+            padding: 15px 16px 0;
+        }
+
+        .famous_shop .item .image {
+            display: block;
+        }
+
+        .famous_shop .item h3 {
+            width: 205px;
+            height: 18px;
+            margin-top: 18px;
+            padding: 0 16px;
+
+        }
+
+        .famous_shop .item h3 a {
+            display: block;
+            width: 205px;
+            height: 18px;
+            line-height: 18px;
+            color: #666;
+            font-size: 14px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .famous_shop .item .number {
+            width: 205px;
+            height: 17px;
+            padding: 0 16px;
+            margin: 10px 0 12px;
+        }
+
+        .famous_shop .item .price {
+            font-size: 16px;
+            color: #f76120;
+            font-family: arial,sans-serif;
+
+        }
+
+        .famous_shop .item .quantity {
+            margin-top: 2px;
+            font-size: 12px;
+            color: #999;
+            font-family: arial,sans-serif;
+
+        }
+
+        .famous_shop .item .discount {
+            width: 205px;
+            height: 45px;
+            margin: 0 16px;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .famous_shop .item .discount span {
+            padding: 1px 5px;
+            background: #f76120;
+            color: #fff;
+            font-size: 12px;
+            line-height: 40px;
+        }
+
+        .famous_shop .item.last {
+            border-right: none;
+        }
+
+        .famous_shop .dream {
+            width: 198px;
+            height: 310px;
+        }
+        
+        .famous_shop .dream .true {
+            width: 198px;
+            height: 20px;
+            margin: 14px 0;
+            background: url("images/famous_shop.png") no-repeat 0 -448px;
+        }
+
+        .famous_shop .dream .true a {
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .famous_shop .dream .image {
+            width: 196px;
+            height: 260px;
+            border: 1px solid #eeeeee;
+        }
+
+        .category {
+            width: 100%;
+        }
+
+        .category .shop .title h3 span {
+            width: 38px;
+            height: 40px;
+            background: url("images/category-bg.png") no-repeat 0 5px;
+        }
+
+        .category .famous_shop .item_list {
+            width: 1170px;
+            height: 1560px;
+            border: 1px solid #eeeeee;
+        }
+
+        .category .famous_shop .item {
+            width: 291px;
+            height: 311px;
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+        }
+
+        .general_template {
+            width: 100%;
+        }
+
+        .general_template .top {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 12px;
+        }
+
+        .general_template .top .title {
+            height: 100%;
+            line-height: 30px;
+            padding-left: 45px;
+            font-size: 20px;
+            color: #666;
+            background: url("images/title_bg.png") no-repeat;
+        }
+
+        .general_template .top .nav a {
+            height: 14px;
+            line-height: 14px;
+            padding: 0 9px;
+            margin-top: 13px;
+            border-right: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .general_template .top .nav a.all {
+            background: url("images/arrow_right.png") no-repeat right center;
+            border-right: none;
+        }
+
+        .general_template .item_list .item {
+
+            width: 291px;
+            border-top: 1px solid #eeeeee;
+            border-left: 1px solid #eeeeee;
+        }
+
+        .general_template .item_list .item .image {
+            display: block;
+            position: relative;
+            padding: 12px 15px 0;
+        }
+
+        .general_template .item_list .item .mark {
+            position:absolute;
+            left: 15px;
+            top: 8px;
+            height: 40px;
+        }
+
+        .general_template .item .mark span {
+            width: 43px;
+            height: 40px;
+            margin-right: -3px;
+            color: #fff;
+            background-image: url("images/logo.png");
+            background-repeat: no-repeat;
+            text-indent: -9999px;
+        }
+
+        .general_template .item .mark .multi {
+            background-position: 0 -493px;
+        }
+
+        .general_template .item .mark .no_booking {
+            background-position: 0 -451px;
+        }
+
+        .general_template .item .description {
+            display: block;
+            margin-top: 12px;
+            padding: 0 15px 5px;
+        }
+
+        .general_template .item .description h3 {
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            color: #666;
+            text-indent: -0.5em;
+        }
+
+        .general_template .item .description p {
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .general_template .item .detail {
+            margin-bottom: 10px;
+            padding: 0 15px;
+            height: 24px;
+        }
+        .general_template .item .discount_price {
+            font: 20px arial,sans-serif;
+            color: #f76120;
+
+        }
+
+        .general_template .item .discount_price span {
+            margin: 0.1em;
+        }
+
+        .general_template .item .original_price {
+            font: 12px arial,sans-serif;
+            text-decoration: line-through;
+            color: #999;
+            margin: 7px 0 0 5px;
+        }
+
+        .general_template .item .saled_quantity {
+            margin-top: 6px;
+            color: #999;
+        }
+
+        .general_template .item .comments {
+            display: block;
+            height: 12px;
+            line-height: 12px;
+            padding: 11px 15px 22px;
+            border-top: 1px dotted #ddd ;
+
+        }
+
+        .general_template .item .comments .dark_stars{
+            width: 60px;
+            height: 12px;
+            background: url("images/dark_stars.png") repeat-x;
+        }
+
+        .general_template .item .comments .bright_stars{
+            width: 48px;
+            height: 12px;
+            background: url("images/bright_stars.png") repeat-x;
+        }
+
+        .general_template .item .comments_link {
+            padding-left: 9px;
+            color: #999999;
+        }
+
+        .general_template  .more_link {
+            width: 1170px;
+            height: 48px;
+            line-height: 48px;
+            background: #f6f6f6;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .general_template .more_link a {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .footer_wrapper .top, .footer_wrapper .middle {
+            width: 1170px;
+            margin: 0 auto;
+        }
+
+        .footer_wrapper .bottom {
+            width: 100%;
+            margin-top: 10px;
+            border-top: 1px solid #dddddd;
+            background: #f9f9f9;
+        }
+
+        .footer_wrapper .top .bottom_links a {
+            width: 90px;
+            height: 23px;
+            line-height: 23px;
+            text-align: center;
+            font-size: 12px;
+            color: #666666;
+            border: 1px solid #eeeeee;
+        }
+
+        .footer_wrapper .top .bottom_links a.active {
+            background: #eeeeee;
+        }
+
+        .footer_wrapper .top .other_bottom_links {
+            width: 1168px;
+            height: 41px;
+            border: 1px solid #EEEEEE;
+            border-top: none;
+            padding-left: 15px;
+        }
+
+        .footer_wrapper .top .other_bottom_links a {
+            width: 95px;
+            height: 41px;
+            line-height: 41px;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .footer_wrapper .middle {
+            width: 1170px;
+            border-top: 3px double #eee;
+            margin-top: 20px;
+            padding: 20px 0 0 10px;
+        }
+
+        .footer_wrapper .middle dl {
+            width: 216px;
+        }
+
+        .footer_wrapper .middle dl.last {
+            width: 207px;
+            border-right: 1px solid #eeeeee;
+        }
+
+        .footer_wrapper .middle dl dt {
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #666666;
+            padding-bottom: 18px;
+        }
+
+        .footer_wrapper .middle dl dd {
+            height: 12px;
+            line-height: 12px;
+            padding-bottom: 9px;
+            font-size: 12px;
+            color: #999999;
+            cursor: pointer;
+        }
+
+        .footer_wrapper .middle .contact {
+            padding-left: 37px;
+        }
+
+        .footer_wrapper .middle .contact .face {
+            width: 49px;
+            height: 45px;
+            background: url("images/footer_bg.png") no-repeat 0 -80px;
+        }
+
+        .footer_wrapper .middle .contact .phone {
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666666;
+        }
+        .footer_wrapper .middle .contact .number strong{
+            font-size: 18px;
+            color: #666;
+        }
+
+        .footer_wrapper .middle .contact .number {
+            height: 18px;
+            font-size: 10px;
+            color: #999;
+            margin-bottom: 33px;
+        }
+
+        .footer_wrapper .middle .contact p {
+            height: 18px;
+            line-height: 18px;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .footer_wrapper .middle .contact p a {
+            color: #2bb8aa;
+        }
+
+        .footer_wrapper .bottom p {
+            width: 1170px;
+            height: 68px;
+            line-height: 68px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 12px;
+            color: #999999;
+        }
+
+        .footer_wrapper .bottom div {
+            width: 600px;
+            height: 38px;
+            padding: 2px 0 41px;
+            margin: 0 auto;
+        }
+
+        .footer_wrapper .bottom a {
+            height: 38px;
+            margin-right: 4px;
+            background: url("images/footer_bg.png") no-repeat;
+        }
+
+        .footer_wrapper .bottom a.beian {
+            width: 109px;
+            background-position: 0 -167px;
+        }
+
+        .footer_wrapper .bottom a.gongshang {
+            width: 40px;
+            background: url("images/gongshangpng.png") no-repeat 0 -2px;
+        }
+
+        .footer_wrapper .bottom a.alipay {
+            width: 123px;
+            background-position: 0 0;
+        }
+
+        .footer_wrapper .bottom a.qqpay {
+            width: 83px;
+            background-position: 0 -207px;
+        }
+
+        .footer_wrapper .bottom a.trust {
+            width: 107px;
+            background-position: 0 -127px;
+        }
+
+        .footer_wrapper .bottom a.customer {
+            width: 107px;
+            background-position: 0 -40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header_wrapper">
+        <div class="header clearfix">
+            <div class="login fl">
+                <a class="fl favorite" href="javascript:;">
+                    <i class="F-glob F-glob-star-border"></i>
+                    收藏美团
+                </a>
+                <a class="fl entry" href="javascript:;">登录</a>
+                <a class="fl register" href="javascript:;">
+                    注册
+                    <i class="vertical-bar"></i>
+                </a>
+                <a class="fl phone" href="javascript:;">
+                    <i class="F-glob F-glob-phone"></i>
+                    手机美团
+                    <i class="tri_down"></i>
+                </a>
+            </div>
+            <div class="my-info fr">
+                <a class="fl my-order" href="javascript:;">我的订单</a>
+                <a class="fl" href="javascript:;">
+                    我的美团
+                    <i class="tri_down"></i>
+                    <i class="vertical-bar"></i>
+                </a>
+                <a class="fl" href="javascript:;">
+                    最近浏览
+                    <i class="tri_down"></i>
+                    <i class="vertical-bar"></i>
+                </a>
+                <a class="fl cart" href="javascript:;">
+                    <i class="F-glob F-glob-cart"></i>
+                    购物车<span>0</span>件
+                    <i class="tri_down"></i>
+                    <i class="vertical-bar"></i>
+                </a>
+                <a class="fl" href="javascript:;">
+                    联系客服
+                    <i class="tri_down"></i>
+                    <i class="vertical-bar"></i>
+                </a>
+                <a class="fl" href="javascript:;">
+                    我是商家
+                    <i class="tri_down"></i>
+                    <i class="vertical-bar"></i>
+                </a>
+                <a class="fl more" href="javascript:;">
+                    更多
+                    <i class="tri_down"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content_wrapper">
+        <div class="banner clearfix">
+            <a class="fl" href="javascript:;">
+                <img src="images/banner.jpg" border="0">
+                <i class="close_btn"></i>
+                <span>
+                    <i class="gray"></i>
+                    <i class="green"></i>
+                </span>
+            </a>
+        </div>
+        <div class="search clearfix">
+            <div class="city fl">
+                <a class="logo fl" href="javascript:;"></a>
+                <div class="fl">
+                    <h3>上海</h3>
+                    <a class="switch" href="javascript:;">切换城市</a>
+                </div>
+            </div>
+            <div class="fl search_box">
+                <div class="search_bar clearfix">
+                    <div class="fl border clearfix">
+                        <a class="fl" href="javascript:;">
+                            团购
+                            <i class="tri_down"></i>
+                        </a>
+                        <input class="fltext" placeholder="请输入商品名称、地址等">
+                    </div>
+                    <input class="fl go" type="button" value="搜索">
+                </div>
+                <div class="rec">
+                    <a class="fl" href="javascript:;">欧莱雅</a>
+                    <a class="fl" href="javascript:;">电影</a>
+                    <a class="fl" href="javascript:;">蛋糕</a>
+                    <a class="fl" href="javascript:;">自助餐</a>
+                    <a class="fl" href="javascript:;">火锅</a>
+                    <a class="fl" href="javascript:;">外婆家</a>
+                    <a class="fl" href="javascript:;">外滩酒店</a>
+                    <a class="fl" href="javascript:;">汗蒸</a>
+                    <a class="fl" href="javascript:;">钟点房</a>
+                </div>
+            </div>
+            <div class="fr refund">
+                <a class="fl" href="javascript:;">
+                    <i class="F-glob F-glob-commitment-retire"></i>
+                    随时退
+                </a>
+                <a class="fl" href="javascript:;">
+                    <i class="F-glob F-glob-commitment-free"></i>
+                    不满意免单
+                </a>
+                <a class="fl" href="javascript:;">
+                    <i class="F-glob F-glob-commitment-expire"></i>
+                    过期退
+                </a>
+            </div>
+        </div>
+        <div class="top_nav">
+            <dl class="fl all_kinds">
+                <dt class="green_bg">全部分类</dt>
+                <dd class="sidebar">
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                美食
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+                            <a class="fl" href="javascript:;">代金券</a>
+                            <a class="fl" href="javascript:;">自助餐</a>
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                酒店
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+                            <a class="fl" href="javascript:;">经济型酒店</a>
+
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                电影/在线选座
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                KTV/在线预订
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                休闲娱乐
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+                            <a class="fl" href="javascript:;">足疗按摩</a>
+                            <a class="fl" href="javascript:;">温泉</a>
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                周边游/旅游
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                生活服务
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+                            <a class="fl" href="javascript:;">婚纱摄影</a>
+                            <a class="fl" href="javascript:;">儿童摄影</a>
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl>
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                购物
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+                            <a class="fl" href="javascript:;">女装</a>
+                            <a class="fl" href="javascript:;">男装</a>
+                            <a class="fl" href="javascript:;">内衣</a>
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+                    <dl class="last">
+                        <dt class="clearfix fl">
+                            <a class="fl" href="javascript:;">
+                                丽人
+                            </a>
+                        </dt>
+                        <dd class="clearfix fr">
+                            <a class="fl" href="javascript:;">美发</a>
+                            <a class="fl" href="javascript:;">美甲</a>
+                        </dd>
+                        <i class="F-glob F-glob-caret-right-thin"></i>
+                    </dl>
+
+                </dd>
+            </dl>
+            <div class="fl top_nav_item">
+                <a class="fl" href="javascript:;">首页</a>
+                <a class="fl" href="javascript:;">今日新单</a>
+                <a class="fl" href="javascript:;">身边团购</a>
+                <a class="fl" href="javascript:;">购物</a>
+                <a class="fl" href="javascript:;">身边外卖</a>
+                <a class="fl" href="javascript:;">名店抢购</a>
+            </div>
+        </div>
+        <div class="middle_content">
+            <div class="nav_img fl">
+                <div class="hot_nav">
+                    <dl class="clearfix">
+                        <dt class="fl">
+                            <i class="F-glob F-glob-hot"></i>
+                            热门团购
+                        </dt>
+                        <dd class="fl">
+                            <a class="fl orange" href="javascript:;">代金券</a>
+                            <a class="fl orange" href="javascript:;">经济型酒店</a>
+                            <a class="fl orange" href="javascript:;">电影</a>
+                            <a class="fl" href="javascript:;">足疗按摩</a>
+                            <a class="fl" href="javascript:;">婚纱摄影</a>
+                            <a class="fl" href="javascript:;">美发</a>
+                            <a class="fl" href="javascript:;">蛋糕甜点</a>
+                            <a class="fl" href="javascript:;">儿童摄影</a>
+                            <a class="fl orange" href="javascript:;">火锅</a>
+                            <a class="fl" href="javascript:;">美甲</a>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="fl">
+                            全部区域
+                            <i class="F-glob F-glob-position"></i>
+                        </dt>
+                        <dd class="fl">
+                            <a class="fl" href="javascript:;">浦东新区</a>
+                            <a class="fl" href="javascript:;">徐汇区</a>
+                            <a class="fl" href="javascript:;">长宁区</a>
+                            <a class="fl" href="javascript:;">黄浦区</a>
+                            <a class="fl" href="javascript:;">静安区</a>
+                            <a class="fl" href="javascript:;">闵行区</a>
+                            <a class="fl" href="javascript:;">卢湾区</a>
+                            <a class="fl" href="javascript:;">杨浦区</a>
+                            <a class="fl" href="javascript:;">普陀区</a>
+                        </dd>
+                        <a class="fr more" href="javascript:;">更多</a>
+                    </dl>
+                    <dl class="clearfix">
+                        <dt class="fl">
+                            热门商圈
+                            <i class="F-glob F-glob-shangquan"></i>
+                        </dt>
+                        <dd class="fl">
+                            <a class="fl" href="javascript:;">人民广场</a>
+                            <a class="fl" href="javascript:;">青浦城区</a>
+                            <a class="fl" href="javascript:;">南桥镇</a>
+                            <a class="fl" href="javascript:;">五角场/大学区</a>
+                            <a class="fl" href="javascript:;">八佰伴</a>
+                            <a class="fl" href="javascript:;">莘庄</a>
+                            <a class="fl" href="javascript:;">松江镇</a>
+                            <a class="fl" href="javascript:;">金桥</a>
+                            <a class="fl" href="javascript:;">七宝</a>
+                            <a class="fl" href="javascript:;">天山</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="hot_img">
+                    <div class="fl hot_img_left">
+                        <a href="javascript:;">
+                            <img src="images/crab.jpg" width="333" height="232" border="0">
+                            <span class="discount">7.7</span>
+                        </a>
+                        <div class="desc">
+                            <div class="fl title">
+                                <h3><a href="javascript:;">七欣天</a></h3>
+                                <p>波格力蟹1斤，活蟹现杀，肉肥鲜嫩，秘制配方</p>
+                            </div>
+                            <div class="fr price">
+                                ¥<strong>68</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fr hot_img_right">
+                        <a href="javascript:;">
+                            <img src="images/fish.jpg" width="333" height="232" border="0">
+                            <span class="discount">7.7</span>
+                        </a>
+                        <div class="desc">
+                            <div class="fl title">
+                                <h3><a href="javascript:;">蜀江烤鱼</a></h3>
+                                <p>100元代金券1张，除酒水外全场通用，可叠加使用</p>
+                            </div>
+                            <div class="fr price">
+                                ¥<strong>70.5</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fl qrcode">
+                <img src="images/qrcode.png" border="0">
+            </div>
+            <div class="fl super_tuesday">
+                <a class="ads" href="javascript:;">
+                    <h2>超级星期二</h2>
+                    <p>每周10点等你来</p>
+                    <img src="images/clock.jpg">
+                </a>
+            </div>
+
+        </div>
+        <div class="famous_shop">
+            <div class="shop fl">
+                <div class="title">
+                    <a class="fl" href="javascript:;"><h3><span class="fl"></span>名店抢购</h3></a>
+                </div>
+                <div class="item_list clearfix">
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/item.jpg" width="205" height="124">
+                        </a>
+                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
+                        <div class="number clearfix">
+                            <span class="fl price">
+                                ¥88
+                            </span>
+                            <span class="fr quantity">
+                                已售<strong>183</strong>
+                            </span>
+                        </div>
+                        <p class="discount"><span>手机购买立减¥15</span></p>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/item.jpg" width="205" height="124">
+                        </a>
+                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
+                        <div class="number clearfix">
+                            <span class="fl pice">
+                                ¥88
+                            </span>
+                            <span class="fr quantity">
+                                已售<strong>183</strong>
+                            </span>
+                        </div>
+                        <p class="discount"><span>手机购买立减¥15</span></p>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/item.jpg" width="205" height="124">
+                        </a>
+                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
+                        <div class="number clearfix">
+                            <span class="fl price">
+                                ¥88
+                            </span>
+                            <span class="fr quantity">
+                                已售<strong>183</strong>
+                            </span>
+                        </div>
+                        <p class="discount"><span>手机购买立减¥15</span></p>
+                    </div>
+                    <div class="item fl last">
+                        <a class="image" href="javascript:;">
+                            <img src="images/item.jpg" width="205" height="124">
+                        </a>
+                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
+                        <div class="number clearfix">
+                            <span class="fl price">
+                                ¥88
+                            </span>
+                            <span class="fr quantity">
+                                已售<strong>183</strong>
+                            </span>
+                        </div>
+                        <p class="discount"><span>手机购买立减¥15</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="dream fr">
+                <div class="true">
+                    <a class="fr" href="javascript:;">全部</a>                    
+                </div>
+                <div class="image">
+                    <a class="fl" href="javascript:;">
+                        <img src="images/phone.jpg" width="196" height="260">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <div class="general_template food">
+                    <div class="top clearfix">
+                        <a class="fl title" href="javascript:;"><h3><span class="fl"></span>美食</h3></a>
+                        <div class="fr nav clearfix">
+                            <a class="fl" href="javascript:;">代金券</a>
+                            <a class="fl" href="javascript:;">自助餐</a>
+                            <a class="fl" href="javascript:;">火锅</a>
+                            <a class="fl" href="javascript:;">烧烤烤肉</a>
+                            <a class="fl" href="javascript:;">香锅烤鱼</a>
+                            <a class="fl" href="javascript:;">西餐</a>
+                            <a class="fl all" href="javascript:;">全部</a>
+                        </div>
+                    </div>
+                    <div class="item_list clearfix">
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                    <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                                </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="item fl">
+                            <a class="image" href="javascript:;">
+                                <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                            </a>
+                            <a class="description"  href="javascript:;">
+                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                                <p>饮品6选1，精致美味，幸福滋味</p>
+                            </a>
+                            <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                                <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                            </div>
+                            <a class="comments clearfix" href="javascript:;">
+                                <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="more_link">
+                        <a href="javascript:;">
+                            更多美食团购，请点击查看
+                            <i class="F-glob F-glob-caret-right-small"></i>
+                        </a>
+                    </div>
+            </div>
+            <div class="general_template entertainment">
+                <div class="top clearfix">
+                    <a class="fl title" href="javascript:;"><h3><span class="fl"></span>休闲娱乐</h3></a>
+                    <div class="fr nav clearfix">
+                        <a class="fl" href="javascript:;">游泳/水上乐园</a>
+                        <a class="fl" href="javascript:;">运动健身</a>
+                        <a class="fl" href="javascript:;">足疗按摩</a>
+                        <a class="fl all" href="javascript:;">全部</a>
+                    </div>
+                </div>
+                <div class="item_list clearfix">
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                    <div class="item fl">
+                        <a class="image" href="javascript:;">
+                            <img src="images/bud.jpg" width="260" height="154">
+                                <span class="mark clearfix">
+                                    <span class="fl multi">多套餐</span>
+                                    <span class="fl no_booking">免预约</span>
+                                </span>
+                        </a>
+                        <a class="description"  href="javascript:;">
+                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
+                            <p>饮品6选1，精致美味，幸福滋味</p>
+                        </a>
+                        <div class="detail clearfix">
+                                    <span class="fl discount_price">
+                                        ¥<span>5.6</span>
+                                    </span>
+                            <span class="fl original_price">¥7</span>
+                                    <span class="fr saled_quantity">
+                                        已售<strong>183</strong>
+                                    </span>
+                        </div>
+                        <a class="comments clearfix" href="javascript:;">
+                            <span class="fr comments_link">100人评价</span>
+                                <span class="fr dark_stars">
+                                    <span class="fl bright_stars"></span>
+                                </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="more_link">
+                    <a href="javascript:;">
+                        更多休闲娱乐团购，请点击查看
+                        <i class="F-glob F-glob-caret-right-small"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_wrapper">
+        <div class="top">
+            <div class="bottom_links clearfix">
+                <a class="fl active" href="javascript:;">团购分类</a>
+                <a class="fl" href="javascript:;">热门地标</a>
+                <a class="fl" href="javascript:;">热门团购</a>
+                <a class="fl" href="javascript:;">精品推荐</a>
+                <a class="fl" href="javascript:;">历史团购</a>
+                <a class="fl" href="javascript:;">热门城市</a>
+                <a class="fl" href="javascript:;">周边城市</a>
+                <a class="fl" href="javascript:;">美团推荐</a>
+            </div>
+            <div class="other_bottom_links clearfix">
+                <a class="fl active" href="javascript:;">美食团购</a>
+                <a class="fl" href="javascript:;">电影团购</a>
+                <a class="fl" href="javascript:;">休闲娱乐团购</a>
+                <a class="fl" href="javascript:;">旅游团购</a>
+                <a class="fl" href="javascript:;">生活服务团购</a>
+                <a class="fl" href="javascript:;">购物团购</a>
+                <a class="fl" href="javascript:;">丽人团购</a>
+                <a class="fl" href="javascript:;">团购评论</a>
+                <a class="fl" href="javascript:;">品牌团购</a>
+                <a class="fl" href="javascript:;">专题团购</a>
+            </div>
+        </div>
+        <div class="middle clearfix">
+            <dl class="fl">
+                <dt>获取更新</dt>
+                <dd>邮件订阅</dd>
+                <dd>iPhone/Android</dd>
+                <dd>美团QQ空间</dd>
+                <dd>美团新浪微博</dd>
+                <dd>sitemap</dd>
+                <dd>RSS订阅</dd>
+            </dl>
+            <dl class="fl">
+                <dt>商务合作</dt>
+                <dd>商家合作</dd>
+                <dd>美团商家营销平台</dd>
+                <dd>市场合作</dd>
+                <dd>美团联盟</dd>
+                <dd>廉政邮箱</dd>
+                <dd>lianzheng@meituan.com</dd>
+            </dl>
+            <dl class="fl">
+                <dt>公司信息</dt>
+                <dd>关于美团</dd>
+                <dd>美团承诺</dd>
+                <dd>媒体报道</dd>
+                <dd>加入我们</dd>
+                <dd>法律声明</dd>
+                <dd>用户协议</dd>
+                <dd>营业执照</dd>
+            </dl>
+            <dl class="fl last">
+                <dt>用户帮助</dt>
+                <dd>申请退款</dd>
+                <dd>查看美团券密码</dd>
+                <dd>常见问题</dd>
+                <dd>开放API</dd>
+                <dd>美团云</dd>
+                <dd>反诈骗公告</dd>
+            </dl>
+            <div class="fl contact">
+                <div class="face"></div>
+                <p class="phone">客服电话</p>
+                <p class="number"><strong>400-660-5335</strong>(9:00-22:00)</p>
+                <p>退款、退换货、查看美团券</p>
+                <p><a href="javascript:;">参考教程，轻松搞定</a></p>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>©2015美团网团购 meituan.com 京ICP证070791号 京公网安备11010502025545号 电子公告服务规则</p>
+            <div class="clearfix">
+                <a class="fl beian" href="javascript:;"></a>
+                <a class="fl gongshang" href="javascript:;"></a>
+                <a class="fl alipay" href="javascript:;"></a>
+                <a class="fl qqpay" href="javascript:;"></a>
+                <a class="fl trust" href="javascript:;"></a>
+                <a class="fl customer" href="javascript:;"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

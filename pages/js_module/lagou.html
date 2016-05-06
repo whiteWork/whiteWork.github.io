@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/lagou.css"/>
+    <script src="../../js/Move1.js"></script>
+    <script>
+        window.onload = function() {
+            var oBox = document.getElementsByClassName('box')[0];
+            var aHead = document.getElementsByClassName('thead')[0].children[1].children;
+            var oEm = document.getElementsByClassName('thead')[0].children[0];
+            var oUl = document.getElementsByClassName('tbody')[0].children[0];
+            var liH = oUl.children[0].offsetHeight;
+            var now = 0;
+            var timerAuto = null;
+
+            for (var i = 0; i < aHead.length; i++) {
+                (function (index) {
+                    aHead[index].onmouseover = function () {
+                        now = index;
+                        tab();
+                    };
+                })(i);
+            }
+
+            timerAuto = setInterval(next, 2000);
+
+            oBox.onmouseover = function () {
+                clearInterval(timerAuto);
+            };
+
+            oBox.onmouseout = function () {
+                timerAuto = setInterval(next, 2000);
+            };
+
+            function next() {
+                now++;
+                if (now == aHead.length) now = 0;
+
+                tab();
+            }
+
+            function tab() {
+                for (var i = 0; i < aHead.length; i++) {
+                    aHead[i].className = "";
+                }
+                aHead[now].className = "active";
+                //oEm.style.top = now * 55 + 'px';
+                //oUl.style.top = - now * liH + 'px';
+                move(oEm, 'top', now * 55, 200);
+                move(oUl, 'top', - now * liH, 200);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box clearfix">
+        <div class="tbody fl">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <img src="../../images/lagou_body_one.JPG" alt=""/>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="../../images/lagou_body_two.JPG" alt=""/>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img src="../../images/lagou_body_three.JPG" alt=""/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="thead fl">
+            <em></em>
+            <ul>
+                <li class="active">
+                    <i></i>
+                    <img src="../../images/lagou_head_one.JPG" alt=""/>
+                </li>
+                <li>
+                    <i></i>
+                    <img src="../../images/lagou_head_two.JPG" alt=""/>
+                </li>
+                <li>
+                    <i></i>
+                    <img src="../../images/lagou_head_three.JPG" alt=""/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

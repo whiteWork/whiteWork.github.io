@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float:left;
+}
+
+.fr {
+    float:right;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.box {
+    width: 800px;
+    height: 600px;
+    margin: 10px auto;
+}
+.box .main{
+    width: 600px;
+    height: 100%;
+}
+.box .main .readarea{
+    height: 400px;
+    background: #00b38a;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.box .main .sendarea{
+    position: relative;
+    height: 200px;
+    background: #00b38a;
+}
+
+.box .main .sendarea textarea {
+    width: 598px;
+    height: 160px;
+    resize: none;
+}
+.box .main .sendarea input {
+    width: 50px;
+    height: 30px;
+    position:absolute;
+    right: 0;
+    bottom: 5px;
+}
+.box .friends{
+    width: 200px;
+    height: 100%;
+    background: #008177;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.box .friends ul {}
+.box .friends ul li{
+    margin: 3px 0;
+}
+.box .friends ul li img{
+    width: 50px;
+    vertical-align: middle;
+}
+.box .friends ul li span{
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+}
+

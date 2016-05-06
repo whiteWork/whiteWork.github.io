@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .fl {
+            float:left;
+        }
+
+        .fr {
+            float:right;
+        }
+
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+        }
+
+        .up {
+            margin-left: 200px;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 200px solid #00b38a;
+        }
+
+        .left {
+            margin-right: 200px;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-right: 200px solid #00b38a;
+        }
+
+        .right {
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-left: 200px solid #00b38a;
+        }
+
+        .down {
+            margin-left: 200px;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-top: 200px solid #00b38a;
+        }
+    </style>
+</head>
+<body>
+<div class="triangle up"></div>
+<div class="clearfix">
+    <div class="triangle left fl"></div>
+    <div class="triangle right fl"></div>
+</div>
+<div class="triangle down"></div>
+</body>
+</html>

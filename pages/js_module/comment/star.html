@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>带负值的星星评分</title>
+<style type="text/css">
+    div {
+        width: 400px;
+        height: 30px;
+        overflow: hidden;
+        margin: 100px auto;
+    }
+span{ width: 27px; height: 28px; display: inline-block; background:url(img/star.gif) no-repeat 0px 0px; cursor: pointer; float: left;}
+strong{ float: left; padding-top:6px; padding-left: 10px;}
+.on{ background-position:0px -29px; }
+</style>
+<script>
+    window.onload = function() {
+        /*
+        * 鼠标移入
+        * 点亮当前星星与中间那颗星星之间所有的星星
+        * 中间星星的索引为5
+        * 当前星星的索引为i
+        * 如果i小于5，则从第i颗星星一直点到中间的星星
+        * 如果i大于5，则从中间的星星一直点到第i颗星星
+        * 如果i等于5，则只保持中间的星星点亮，其他变灰
+        *
+        * 鼠标点击
+        * 用户评分以最后一次点击的星星为准
+        * 初始值为5即0分
+        *
+        * 鼠标移出
+        * 只点亮最后一次点击的星星与中间星星的之间的所有星星，其他灰掉
+        * */
+        var oDiv = document.getElementById('box');
+        var aStars = oDiv.getElementsByTagName('span');
+        var oScore = document.getElementById('score');
+        var lastClickIndex = 5;
+        var now = 5;
+
+        for (var i = 0; i < aStars.length; i++) {
+            var obj = aStars[i];
+            (function(index) {
+                obj.onmouseover = function () {
+                    now = index;
+                    star();
+                }
+
+                obj.onclick = function() {
+                    lastClickIndex = index;
+                }
+
+                obj.onmouseout = function () {
+                    now = lastClickIndex;
+                    star();
+                }
+            })(i);
+        }
+
+        function star() {
+            for(var i = 0; i < aStars.length; i++) {
+                aStars[i].className = '';
+            }
+            if (now < 5) {
+                for (var i = now; i <= 5; i++) {
+                    var obj = aStars[i];
+                    obj.className = 'on';
+                }
+            } else if (now > 5) {
+                for (var i = 5; i <= now; i++) {
+                    var obj = aStars[i];
+                    obj.className = 'on';
+                }
+            } else {
+                var obj = aStars[5];
+                obj.className = 'on';
+            }
+            oScore.innerHTML = now - 5 + '分';
+        }
+     }
+</script>
+</head>
+
+<body>
+	<div id='box'>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span class='on'></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	
+	<strong id='score'>0分</strong>
+	</div>
+</body>
+</html>

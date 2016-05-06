@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float:left;
+}
+
+.fr {
+    float:right;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+body {
+    /*background: url("../images/body_bg.png") repeat;*/
+    /*background: lightgreen;*/
+}
+
+.box {
+    height: 100%;
+}
+.box .header{
+    position: relative;
+    height: 60px;
+    background: #00b38a;
+    /*background-image: linear-gradient(to right, #4776e6, #78d1ee);*/
+    /*background-image: linear-gradient(to right, #1cd8d2, #93edc7);*/
+}
+
+.header h1 {
+    position:absolute;
+    left: 20px;
+    top: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    color: #fff;
+    font-family: 'Hiragino Sans GB', sans-serif;
+    font-weight: normal;
+}
+.header .nav{
+    width: 720px;
+    height: 100%;
+    margin: 0 auto;
+}
+.header .nav ul{
+    position: relative;
+    height: 100%;
+}
+.header .nav ul li{
+    position: relative;
+    width: 240px;
+    height: 100%;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    z-index: 2;
+}
+
+.header .nav ul li.active{
+    position:absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    /*background: #008177;*/
+    background: rgba(0,129,119,.7);
+    border-radius: 10px 10px 0 0;
+    /*box-shadow: 1px 1px 1px #008177;*/
+}
+.header .nav ul li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.cssmodule {
+    width: 650px;
+    margin: 7% auto;
+}
+
+.cssmodule .cell {
+    float: left;
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 10px;
+    padding: 5px;
+    /*border: 1px solid #cccccc;*/
+    background: #00b38a;
+    font-size: 30px;
+    line-height: 140px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.cssmodule .cell img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.cssmodule .cover {
+    position:absolute;
+    left: -140px;
+    top: 0;
+    width: 140px;
+    height: 140px;
+    background: rgba(19, 220, 177, .8);
+    font-size: 24px;
+    line-height: 140px;
+    text-align: center;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.jsmodule {
+    position: relative;
+    width: 944px;
+    margin: 2.6% auto;
+}
+.jsmodule ul{
+    position: relative;
+    width: 972px;
+}
+.jsmodule ul li{
+    width: 296px;
+    height: 204px;
+    line-height: 204px;
+    text-align: center;
+    font-size: 50px;
+    background: #00b38a;
+    margin: 0 28px 40px 0;
+    overflow: hidden;
+}
+.jsmodule ul li a{
+    position: relative;
+    display: block;
+    margin: 0 1.8%;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.jsmodule ul li a img {
+    height: 100%;
+    /*height: 100%;*/
+}
+
+.jsmodule .cover {
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(19, 220, 177, .8);
+    text-align: center;
+    color: #fff;
+    white-space: nowrap;
+    opacity: 0;
+    filter: alpha(opacity:0);
+}
+.jsmodule .cardhead{
+    position:absolute;
+    left: 50%;
+    /*top: 712px;*/
+    width: 112px;
+    margin-left: -56px;
+}
+.jsmodule .cardhead a{
+    margin: 0 3px;
+    width: 22px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: #00b38a;
+    color: #000;
+    border-radius: 2px;
+    font-size: 12px;
+    font-family: '\65B0\5B8B\4F53', '\5B8B\4F53', Verdana;
+}
+
+.jsmodule div a.active,.jsmodule div a:hover{
+    background: #3385ff;
+    color: #fff;
+}
+
+.box .tab_item {
+    display: none;
+}
+
+.box .tab_item.cur {
+    display: block;
+}
+
+.h5module {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 40px;
+    color: #00b38a;
+}
+
+.h5module {
+    width: 1000px;
+    margin: 7% auto;
+}
+
+.h5module .cell {
+    float: left;
+    position: relative;
+    width: 400px;
+    height: 250px;
+    margin: 10px;
+    padding: 5px;
+    /*border: 1px solid #cccccc;*/
+    background: #00b38a;
+    font-size: 30px;
+    line-height: 250px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.h5module .cell img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.h5module .cover {
+    position:absolute;
+    left: -410px;
+    top: 0;
+    width: 410px;
+    height: 260px;
+    background: rgba(19, 220, 177, .8);
+    font-size: 24px;
+    line-height: 260px;
+    text-align: center;
+    color: #fff;
+    border-radius: 20px;
+}

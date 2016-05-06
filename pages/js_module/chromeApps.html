@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1 {
+            margin-top: 30px;
+            text-align: center;
+            color: #00b38a;
+        }
+
+        ul {
+            position: relative;
+            width: 600px;
+            margin: 40px auto;
+        }
+
+        ul li {
+            float: left;
+            width: 128px;
+            height: 128px;
+            margin: 20px;
+            border: 5px solid #000;
+            background: #fff;
+        }
+
+        ul li img {
+            width: 100%;
+        }
+    </style>
+    <script src="../../js/move.js"></script>
+    <script>
+        window.onload = function() {
+            /*
+             * 思路：
+             *
+             * 0.布局转换
+             * 1.拖拽
+             * 2.碰撞检测(拖拽的物体与被撞的房子)
+             * 2.求拖拽的物体到被碰撞的房子的距离
+             * 3.找到其中离拖拽的物体最近的房子
+             * 4.如果这个房子不是被拖拽的物体现在住的房子，
+             *   则这个房子到被拖拽的物体原来住的房子之间的房子依次往被拖拽的物体原来住的房子方向移动一格；
+             *   最近的房子变成被拖拽的物体的房子
+             * 5.mouseup时回自己的房子
+             * 6.mousedown时清掉自己身上的定时器obj.timer，防止抖动
+             * */
+
+            var oUl = document.getElementsByTagName('ul')[0];
+            var aLi = oUl.getElementsByTagName('li');
+
+            //0.布局转换
+            var aPos = [];
+            for (var i = 0; i < aLi.length; i++) {
+                var obj = aLi[i];
+                aPos.push({left: obj.offsetLeft, top: obj.offsetTop});
+                obj.style.left = obj.offsetLeft + 'px';
+                obj.style.top = obj.offsetTop + 'px';
+            }
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].style.position = "absolute";
+                aLi[i].style.margin = 0;
+                aLi[i].index = i;
+            }
+
+            //1.拖拽
+            var zIndex = 1;
+            for (var i = 0; i < aLi.length; i++) {
+                (function(index) {
+                    var obj = aLi[index];
+                    obj.onmousedown = function (ev) {
+                        var oEvt = ev || event;
+                        var disX = oEvt.clientX - obj.offsetLeft;
+                        var disY = oEvt.clientY - obj.offsetTop;
+                        obj.style.zIndex= zIndex++;
+                        clearInterval(obj.timer);
+
+                        document.onmousemove = function (ev) {
+                            var oEvt = ev || event;
+                            var left = oEvt.clientX - disX;
+                            var top = oEvt.clientY - disY;
+                            obj.style.left = left + 'px';
+                            obj.style.top = top + 'px';
+
+                            //2.碰撞检测,找到最近被撞的房子
+                            var nearObj = findNearest(obj);
+                            if (nearObj && nearObj != obj) {
+                                var n = obj.index;
+                                var m = nearObj.index;
+                                console.log("n: ", n);
+                                console.log("m: ", m);
+                                //依序换位
+                                if (n < m) {
+                                    for (var i = 0 ; i <aLi.length; i++) {
+                                        if (aLi[i].index > n && aLi[i].index <= m) {
+                                            aLi[i].index--;
+                                            move(aLi[i],aPos[aLi[i].index]);
+                                        }
+                                    }
+                                } else {
+                                    for (var i = 0 ; i <aLi.length; i++) {
+                                        if (aLi[i].index < n && aLi[i].index >= m) {
+                                            aLi[i].index++;
+                                            move(aLi[i],aPos[aLi[i].index]);
+                                        }
+                                    }
+                                }
+                                obj.index = m;
+                            }
+                        };
+
+                        document.onmouseup = function () {
+                            document.onmousemove = document.onmouseup = null;
+                            obj.releaseCapture && obj.releaseCapture();
+                            move(obj, aPos[obj.index]);
+                            //obj.style.zIndex = 1;
+                        };
+
+                        obj.setCapture && obj.setCapture();
+                        return false;
+                    };
+                })(i);
+            }
+
+            //2.碰撞检测
+            function collTest(obj1,obj2) {
+                var l1 = obj1.offsetLeft;
+                var t1 = obj1.offsetTop;
+                var r1 = l1 + obj1.offsetWidth;
+                var b1 = t1 + obj1.offsetHeight;
+
+                var l2 = aPos[obj2.index].left;
+                var t2 = aPos[obj2.index].top;
+                var r2 = l2 + obj2.offsetWidth;
+                var b2 = t2 + obj2.offsetHeight;
+
+                if (l1 > r2 || t1 > b2 || r1 < l2 || b1 < t2) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            //3.求拖拽的物体到被碰撞的房子的距离
+            function getDis(obj1, obj2) {
+                var disX = obj1.offsetLeft + obj1.offsetWidth / 2 - (obj2.offsetLeft + obj2.offsetWidth / 2);
+                var disY = obj1.offsetTop + obj1.offsetHeight / 2 - (obj2.offsetTop + obj2.offsetHeight / 2);
+                return Math.sqrt(disX * disX + disY * disY);
+            }
+
+            function findNearest(obj) {
+                var nearDis = 999999;
+                var nearDisIndex = -1;
+                for (var i = 0; i < aLi.length; i++) {
+                    if (collTest(obj, aLi[i])) {
+                        //alert(i);
+                        //3.求拖拽的物体到被碰撞的房子的距离
+                        var dis = getDis(obj, aLi[i]);
+                        console.log("i: ",i, " dis:",dis);
+
+                        if (dis < nearDis) {
+                            nearDis = dis;
+                            nearDisIndex = i;
+                        }
+                    }
+                }
+
+                return aLi[nearDisIndex];
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>拖拽图标，可以变换图标位置，来试试效果吧</h1>
+    <ul>
+        <li><img src="../../images/chrome_1.png" alt=""/></li>
+        <li><img src="../../images/chrome_2.png" alt=""/></li>
+        <li><img src="../../images/chrome_3.png" alt=""/></li>
+        <li><img src="../../images/chrome_4.png" alt=""/></li>
+        <li><img src="../../images/chrome_5.png" alt=""/></li>
+        <li><img src="../../images/chrome_6.png" alt=""/></li>
+        <li><img src="../../images/chrome_7.png" alt=""/></li>
+        <li><img src="../../images/chrome_8.png" alt=""/></li>
+        <li><img src="../../images/chrome_9.png" alt=""/></li>
+    </ul>
+</body>
+</html>

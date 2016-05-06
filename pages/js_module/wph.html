@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/wp.css"/>
+    <script src="../../js/Move1.js"></script>
+    <script>
+        window.onload = function() {
+            var oHeader = document.getElementsByClassName('header')[0];
+            var oFill = document.getElementsByClassName('fill')[0];
+            var oTop = document.getElementsByClassName('top')[0];
+
+            window.onscroll = function () {
+                var scrTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+                if (scrTop > oTop.offsetHeight) {
+                    oFill.style.display = 'block';
+                    //oHeader.style.top = 0;
+                    move(oHeader, 'top', 0, 500);
+                } else {
+                    oFill.style.display = 'none';
+                    //oHeader.style.top = -41 + 'px';
+                    move(oHeader, 'top', -50, 500);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="top">
+        <img src="../../images/wp_header.png" alt=""/>
+    </div>
+    <div class="header clearfix">
+        <div class="hr">
+            <img src="../../images/wp_log.png" alt=""/>
+        </div>
+        <div class="fl nav-left clearfix">
+            <a href="javascript:;" class="fl first">首页</a>
+            <a href="javascript:;" class="fl">美妆频道</a>
+            <a href="javascript:;" class="fl">亲子频道</a>
+            <a href="javascript:;" class="fl">居家频道</a>
+            <a href="javascript:;" class="fl">明天上线</a>
+        </div>
+        <div class="fl nav-right clearfix">
+            <a href="javascript:;" class="fl online">
+                在售商品分类
+                <i></i>
+            </a>
+            <a href="javascript:;" class="fl bag">
+                购物袋
+                <span>
+                    0
+                    <i></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="fill"></div>
+    <div>
+        <img src="../../images/wp_bg.png" alt=""/>
+        <img src="../../images/wp_bg.png" alt=""/>
+        <img src="../../images/wp_bg.png" alt=""/>
+        <img src="../../images/wp_bg.png" alt=""/>
+        <img src="../../images/wp_bg.png" alt=""/>
+        <img src="../../images/wp_bg.png" alt=""/>
+    </div>
+</body>
+</html>

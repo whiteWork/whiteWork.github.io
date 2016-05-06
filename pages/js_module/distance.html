@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .fl {
+            float:left;
+        }
+
+        .fr {
+            float:right;
+        }
+
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        div{
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: #00b38a;
+            overflow: hidden;
+        }
+
+        div h1 {
+            margin-top: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        div ul{
+            position:absolute;
+            left: 0;
+            top: 50%;
+            height: 179px;
+            margin-top: -90px;
+        }
+
+
+        div ul li{
+            position: relative;
+            width: 260px;
+            height: 179px;
+        }
+        div ul li img{
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        div ul li span{
+            display: none;
+            position:absolute;
+            left: 50%;
+            top: 50%;
+            width: 100px;
+            height: 50px;
+            margin-top: -25px;
+            margin-left: -50px;
+            line-height: 50px;
+            font-size: 30px;
+            background: #FFFFFF;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            /*
+             * 思路：
+             *
+             * 0.根据Li的个数，计算Ul的宽
+             * 1.图片可以拖拽
+             * 2.图片越靠近容器的中线，尺寸越大；越远离中线，图片越小;
+             * 3.因为图片的大小和位置都在发生变化，不好计算他的中心点与中线的距离
+             *   所以我们保持Li的大小不变，用计算Li的中心点与中线的距离代替图片与中线的距离
+             * 4.图片在拖拽过程中以下属性会发生变化：width,left,top,opacity，zIndex
+             *   图片width最大值：520px;最小值：260px;
+             * 5.初始化时，可以指定哪一张显示在中间
+             *
+             * */
+            var oDiv = document.getElementsByTagName('div')[0];
+            var oUl = oDiv.getElementsByTagName('ul')[0];
+            var aLi = oUl.children;
+
+            oUl.style.width = aLi.length * aLi[0].offsetWidth + 'px';
+
+            oUl.onmousedown = function (ev) {
+                var oEvt = ev || event;
+                var dis = oEvt.clientX - oUl.offsetLeft;
+
+                document.onmousemove = function(ev) {
+                    var oEvt = ev || event;
+                    var left = oEvt.clientX - dis;
+
+                    //限定
+                    if (left > oDiv.offsetWidth / 2 - aLi[0].offsetWidth / 2) {
+                        left = oDiv.offsetWidth / 2 - aLi[0].offsetWidth / 2
+                    }
+                    if (left < oDiv.offsetWidth / 2 + aLi[0].offsetWidth / 2 - oUl.offsetWidth) {
+                        left = oDiv.offsetWidth / 2 + aLi[0].offsetWidth / 2 - oUl.offsetWidth
+                    }
+
+                    oUl.style.left = left + 'px';
+
+                    setImg();
+                };
+
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                    oUl.releaseCapture && oUl.releaseCapture();
+                };
+
+                oUl.setCapture && oUl.setCapture();
+                return false;
+            };
+
+            setCenter(4);
+            setImg();
+
+            window.onresize = function () {
+                var maxScale = 0;
+                var centerLi = -1;
+                for (var i = 0; i < aLi.length; i++) {
+                    if (aLi[i].scale > maxScale) {
+                        maxScale = aLi[i].scale;
+                        centerLi = i;
+                    }
+                }
+                setCenter(centerLi);
+                setImg();
+            }
+
+            function setCenter(n) {
+                oUl.style.left = oDiv.offsetWidth / 2 - aLi[0].offsetWidth * (0.5 + n) + 'px';
+            }
+            function setImg() {
+                //计算每张图片到中线的距离
+                for (var i = 0; i < aLi.length; i++) {
+                    var centerX = oDiv.offsetWidth / 2;
+                    var liX = oUl.offsetLeft + aLi[0].offsetWidth * (i + 0.5);
+                    var disToCenter = Math.abs(centerX - liX);
+                    //折合成比例，以800px为最大响应距离
+                    if (disToCenter > 800) disToCenter = 800;
+                    var scale = 1 - disToCenter / 800;
+                    aLi[i].scale = scale;
+                    var oSpan = aLi[i].children[1];
+                    oSpan.innerHTML = scale.toFixed(2);
+                    //根据scale调整每张图片的属性：width,left,top,opacity,zIndex
+                    var oImg = aLi[i].children[0];
+                    oImg.style.width = 260 * (1 + scale) + 'px';
+                    oImg.style.left = - (oImg.offsetWidth - aLi[i].offsetWidth) / 2 + 'px';
+                    oImg.style.top = - (oImg.offsetHeight - aLi[i].offsetHeight) / 2 + 'px';
+                    oImg.style.opacity = scale;
+                    oImg.style.filter = "alpha(opacity:" + scale * 100 + ")";
+                    aLi[i].style.zIndex = parseInt(scale * 10000);
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <h1>用鼠标拖动图片，试试效果吧</h1>
+        <ul class="clearfix">
+            <li class="fl"><img src="../../images/distance_1.png" alt=""/><span>1</span></li>
+            <li class="fl"><img src="../../images/distance_2.png" alt=""/><span></span></li>
+            <li class="fl"><img src="../../images/distance_3.png" alt=""/><span></span></li>
+            <li class="fl"><img src="../../images/distance_4.png" alt=""/><span></span></li>
+            <li class="fl"><img src="../../images/distance_5.png" alt=""/><span></span></li>
+            <li class="fl"><img src="../../images/distance_6.png" alt=""/><span></span></li>
+            <li class="fl"><img src="../../images/distance_7.png" alt=""/><span></span></li>
+            <li class="fl"><img src="../../images/distance_8.png" alt=""/><span></span></li>
+        </ul>
+    </div>
+</body>
+</html>

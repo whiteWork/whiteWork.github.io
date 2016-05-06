@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>canvas时钟</title>
+<style>
+body{ background:#000; text-align: center;}
+#c1{ background:#fff;margin-top: 30px;}
+</style>
+<script>
+function d2a(n){
+	return n*Math.PI/180;
+}
+
+function fillZero(n) {
+    return  n < 10 ? "0" + n : "" + n;
+}
+window.onload = function(){
+	var oC = document.getElementById("c1");
+	var gd = oC.getContext("2d");
+	 
+	var cx = 400;
+	var cy = 300;
+	var r  = 100;
+	
+	function drawArc(cx,cy,r,start,end,color){
+		start -= 90;
+		end -= 90;
+		gd.beginPath();
+		gd.lineWidth = "20";
+		gd.strokeStyle = color;
+		gd.arc(cx,cy,r,d2a(start),d2a(end),false);
+		gd.stroke();	
+	}
+	 
+	setInterval(function(){
+		gd.clearRect(0,0,oC.width,oC.height);
+		
+		var oDate = new Date();
+		var h = oDate.getHours();
+		var m = oDate.getMinutes();
+		var s = oDate.getSeconds();
+		var ms = oDate.getMilliseconds();
+		 
+		drawArc(cx,cy,80,0,h%12*30 + m/60*30,"#f47920");
+		drawArc(cx,cy,100,0,m*6 + s/60*6,"#5c7a29");
+		drawArc(cx,cy,120,0,s*6 + ms/1000*6,"#585eaa");
+		
+		var str = fillZero(h) + ":" +fillZero( m )+ ":" +fillZero(s);
+		gd.font = "bold 30px kaiti";
+		gd.fillStyle = "#bad";
+		var w = gd.measureText(str).width;
+		gd.fillText(str,cx-w/2,cy+15);
+		
+	},16); 
+	
+	//导出图片
+	var oBtn = document.getElementById("btn1");
+	
+	oBtn.onclick = function(){
+		var str = oC.toDataURL("image/gif");
+		
+		window.open(str);
+	};
+	
+		
+};
+
+</script>
+</head>
+
+<body>
+
+<div><input id="btn1" type="button" value="拍一张" /></div>
+<img id="img1" src=""/>
+<canvas id="c1" width="800" height="600"></canvas>
+
+</body>
+</html>

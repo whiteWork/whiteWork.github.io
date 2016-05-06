@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .view {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border: 1px solid red;
+            cursor: zoom-in;
+        }
+
+        .view .mask {
+            display: none;
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 175px;
+            height: 175px;
+            background: rgba(0,0,0,.1);
+        }
+
+        .zoom {
+            display: none;
+            position:absolute;
+            left: 450px;
+            top: 0;
+            width: 350px;
+            height: 350px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        .zoom img {
+            position:absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            /*
+             * 放大镜思路：
+             *
+             * 1.鼠标划入oView，那么oMask和oZoom显示
+             *   鼠标划出oView，那么oMask和oZoom隐藏
+             * 2.oMask的中心跟着鼠标走
+             *   当oMask的left和top小于0时，停止移动
+             *   当oMask得left和top大于oView和oMask之差时，停止移动
+             * 3.oZoom中图片的left和top为oMask的3倍
+             * */
+            var oView = document.getElementsByClassName('view')[0];
+            var oMask = document.getElementsByClassName('mask')[0];
+            var oZoom = document.getElementsByClassName('zoom')[0];
+            var oImg = document.getElementById('img');
+
+            oView.onmouseover = function (ev) {
+                //阻止与子元素交互产生的onmouseover事件
+                //判断移入的元素是不是包含在oView里面
+                //如果包含，则说明是子级，要屏蔽，不执行任何动作
+                var oEvt = ev || event;
+                var fromObj = oEvt.fromElement || oEvt.relatedTarget;
+                if (fromObj && oView.contains(fromObj)) {
+                    return;
+                }
+
+                oMask.style.display = oZoom.style.display = 'block';
+
+                var width = oMask.offsetWidth;
+                var height = oMask.offsetHeight;
+                var viewW = oView.offsetWidth;
+                var viewH = oView.offsetHeight;
+                var left = oEvt.clientX;
+                var top = oEvt.clientY;
+
+                setPos(left, top);
+
+                oView.onmousemove = function(ev) {
+                    var oEvt = ev || event;
+                    var left = oEvt.clientX - width / 2;
+                    var top = oEvt.clientY - height / 2;
+
+                    setPos(left, top);
+                };
+
+                function setPos(left, top) {
+                    if (left < 0) {
+                        left = 0;
+                    }
+
+                    if (left > viewW - width) {
+                        left = viewW - width;
+                    }
+
+                    if (top < 0) {
+                        top = 0;
+                    }
+
+                    if (top > viewH - height) {
+                        top = viewH - height;
+                    }
+
+                    oMask.style.left = left + 'px';
+                    oMask.style.top = top + 'px';
+
+                    //oImg.left = -oMask.left/(oDiv1.w-oMask.w) * (oImg.w-oDiv2.w)
+
+                    //oImg.style.left = -oMask.offsetLeft / (oView.offsetWidth - oMask.offsetWidth) * (oImg.offsetWidth - oZoom.offsetWidth) + 'px';
+                    //oImg.style.top = -oMask.offsetTop / (oView.offsetHeight - oMask.offsetHeight) * (oImg.offsetHeight - oZoom.offsetHeight) + 'px';
+                    oImg.style.left = -left * 3 + 'px';
+                    oImg.style.top = -top * 3 + 'px';
+                }
+            }
+
+            oView.onmouseout = function (ev) {
+                //阻止与子元素交互产生的onmouseout事件
+                //判断移出的元素是不是包含在oView里面
+                //如果包含，则说明是子级，要屏蔽，不执行任何动作
+                var oEvt = ev || event;
+                var toObj = oEvt.toElement || oEvt.relatedTarget;
+                if (toObj && oView.contains(toObj)) {
+                    return;
+                }
+                oMask.style.display = oZoom.style.display = 'none';
+            };
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div class="view">
+    <img src="../../images/zoom_small.jpg" alt=""/>
+    <div class="mask"></div>
+</div>
+<div class="zoom">
+    <img src="../../images/zoom_big.jpg" alt="" id="img"/>
+</div>
+</body>
+</html>

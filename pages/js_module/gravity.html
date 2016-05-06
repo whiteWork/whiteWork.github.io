@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            position:absolute;
+            left: 46%;
+            top: 8%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        div img {
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oDiv = document.getElementById("div1");
+            var speedX = 0;
+            var speedY = 0;
+            var lastX = 0;
+            var lastY = 0;
+            var timer = null;
+
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var disX = oEvent.clientX - oDiv.offsetLeft;
+                var disY = oEvent.clientY - oDiv.offsetTop;
+                clearInterval(timer);
+
+                document.onmousemove = function (ev) {
+                    var oEvent = ev || event;
+                    var left = oEvent.clientX - disX;
+                    var top = oEvent.clientY - disY;
+
+                    oDiv.style.left = left + "px";
+                    oDiv.style.top = top + "px";
+
+                    speedX = left - lastX;
+                    speedY = top - lastY;
+
+                    lastX = left;
+                    lastY = top;
+                };
+
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                    oDiv.releaseCapture && oDiv.releaseCapture();
+
+                    move();
+                };
+
+                oDiv.setCapture && oDiv.setCapture();
+                return false;
+            };
+
+            function move() {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    speedY += 3;
+
+
+                    var left = oDiv.offsetLeft + speedX;
+                    var top = oDiv.offsetTop + speedY;
+
+                    if (left >= document.documentElement.clientWidth - oDiv.offsetWidth - 2) {
+                        left = document.documentElement.clientWidth - oDiv.offsetWidth - 2;
+                        speedX *= -.8;
+                        speedY *= .8;
+                    } else if (left <= 0) {
+                        left = 0;
+                        speedX *= -.8;
+                        speedY *= .8;
+                    }
+
+                    if (top >= document.documentElement.clientHeight - oDiv.offsetHeight - 2) {
+                        top = document.documentElement.clientHeight - oDiv.offsetHeight - 2;
+                        speedX *= .8;
+                        speedY *= -.8;
+                    } else if (left <= 0) {
+                        left = 0;
+                        speedX *= .8;
+                        speedY *= -.8;
+                    }
+
+                    oDiv.style.left = Math.round(left) + "px";
+                    oDiv.style.top = Math.round(top) + "px";
+
+                    if (Math.abs(speedX) < 1) {
+                        speedX = 0;
+                    }
+
+                    if (Math.abs(speedY) < 1) {
+                        speedY = 0;
+                    }
+
+                    if (speedX == 0 && speedY == 0 && oDiv.offsetTop == document.documentElement.clientHeight - oDiv.offsetHeight) {
+                        clearInterval(timer);
+                    }
+
+                }, 30);
+            }
+        }
+    </script>
+</head>
+<body>
+   <p>鼠标按住Chrome图标，再甩出去，试试效果吧！</p>
+   <div id="div1">
+       <img src="../../images/chrome-logo-small.jpg" alt=""/>
+   </div>
+</body>
+</html>

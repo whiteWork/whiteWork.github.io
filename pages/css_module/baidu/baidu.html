@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>百度首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+
+        body{
+            font-size: 12px;
+            background: url("images/baidu_frontpage_bg.jpg") no-repeat;
+            /*background-size: 100%;*/
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .box {
+            width: 1280px;
+            height: 698px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .box .header {
+            height: 34px;
+            position: relative;
+        }
+
+        .mask {
+            background: #000;
+            opacity: 0.6;
+            filter: alpha(opacity: 60);
+        }
+
+        .box .header .mask {
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 34px;
+        }
+
+        .box .header .header_content {
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 34px;
+        }
+
+        /*.box .header .header_content .header_menu_left,*/
+        /*.box .header .header_content .header_menu_left,*/
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clearfix {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .header_menu_left a span,  .header a {
+            float: left;
+            color: #fff;
+            font-weight: bold;
+            height: 34px;
+            line-height: 34px;
+        }
+
+        .header_menu_left img {
+            padding-top: 6px;
+        }
+
+        .header_menu_left {
+            /*overflow: hidden;*/
+
+        }
+
+        .header_menu_left .weather {
+            position: relative;
+        }
+
+        .header_menu_left .weather .more_info {
+            display: none;
+            position:absolute;
+            left: 0;
+            top: 34px;
+            width: 200px;
+            height: 100px;
+            z-index: 999;
+            background: red;
+        }
+
+        .header_menu_left .weather:hover .more_info {
+            display: block;
+        }
+
+        .header_menu_left .city {
+            margin-left: 15px;
+        }
+
+        .header_menu_left .weather .green {
+            color: #badc00;
+        }
+
+        .header_menu_left .border {
+            padding: 3px 2px 0 15px;
+
+        }
+
+        .header a.link {
+            text-decoration: underline;
+            margin-left: 14px ;
+        }
+
+        .header_menu_right a.more {
+            text-decoration: none;
+            background: #3388ff;
+            margin-right: 12px;
+        }
+
+        .container .logo {
+            width: 270px;
+            margin: 0 auto;
+            padding: 62px 0 41px;
+        }
+
+        .container .search {
+            width: 640px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 47px;
+        }
+
+        .search .text {
+            height: 40px;
+            width: 524px;
+            border: none;
+            padding-left: 12px;
+            border-right: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .search .submit {
+            font-size: 16px;
+            height: 40px;
+            width: 103px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .container .nav {
+            height: 318px;
+            width: 80px;
+            margin-right: 18px;
+        }
+
+        .container {
+            width: 909px;
+            margin: 0 auto;
+        }
+
+        .container .nav {
+            position: relative;
+            opacity: 0.5;
+            filter: alpha(opacity: 50);
+        }
+        .nav .mask {
+            position:absolute;
+            left: 0;
+            top: 0;
+            height: 318px;
+            width: 80px;
+        }
+
+        .nav .nav_content {
+            position:absolute;
+            left: 0;
+            top: 0;
+            height: 318px;
+            width: 80px;
+        }
+
+        .info {
+            height: 318px;;
+        }
+
+        .nav ul {
+            height: 283px;
+        }
+
+        .nav ul li {
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+        }
+
+        .nav ul li a {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .nav ul li:hover, .nav ul .active, .nav .settings:hover {
+
+            background: #a2a3a5 url(images/menu_skin.png) no-repeat;
+        }
+
+        .nav ul li:hover a , .nav ul .active a{
+            font-weight: bold;
+        }
+
+        .nav .settings {
+            width: 80px;
+            height: 35px;
+        }
+
+        .nav .settings img {
+            padding: 11px 0 0 32px;
+        }
+
+        .news {
+            width: 811px;
+            height: 318px;
+        }
+
+        .photo {
+            width: 425px;
+            height: 318px;
+        }
+
+        .big_photo {
+            width: 425px;
+            height: 260px;
+            position: relative;
+
+        }
+
+        .big_photo:hover {
+            cursor: pointer;
+
+        }
+
+        .big_photo .mask {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 28px;
+        }
+
+        .big_photo .txt {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 411px;
+            height: 28px;
+            line-height: 28px;
+            color: #fff;
+            font-size: 18px;
+            margin-left: 14px;
+        }
+
+        .big_photo .txt a {
+            color: #fff;
+        }
+
+        .big_photo .txt a:hover {
+            text-decoration: underline;
+        }
+
+        .big_photo .mask {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 28px;
+        }
+
+        .small_photo {
+            width: 410px;
+            height: 42px;
+            background: #191919;
+            padding: 8px 0 8px 15px;
+        }
+
+        .small_photo span {
+            width: 68px;
+            height: 40px;
+            border: 1px solid #0d0d0d;
+            margin-right: 12px;
+            position: relative;
+        }
+
+        .small_photo span:hover {
+            border-color: #389cff;
+            cursor: pointer;
+        }
+
+        .small_photo .mask {
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 68px;
+            height: 40px;
+        }
+
+        .small_photo span:hover .mask {
+            opacity: 0;
+            filter: alpha(opacity: 0);
+        }
+
+        .list {
+            width: 386px;
+            height: 318px;
+            background: #fff;
+        }
+
+        .list_header {
+            width: 323px;
+            height: 40px;
+            margin: 10px 30px 0 30px;
+            border-bottom: 1px solid #e9e9e9;
+        }
+
+        .list_header h3 {
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            border-bottom: 2px solid #389cff;
+            padding-left: 28px;
+            padding-right: 11px;
+            background: url("images/baidu_logo_small.png") no-repeat 10px 10px;
+            font-weight: normal;
+        }
+
+        .list_header a {
+            height: 38px;
+            line-height: 38px;
+            font-size: 12px;
+            padding-left: 15px;
+            color: #000;
+            background: url("images/baidu_fresh_btn.png") no-repeat 0 14px;
+            font-weight: normal;
+        }
+
+        .list_body {
+            padding: 11px 38px 0 0;
+        }
+
+        .list_body ul{
+            width: 348px;
+            height: 256px;
+        }
+
+        .list_body ul li {
+            width: 134px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            padding-left: 40px;
+            background: url("images/list-style-image.png") no-repeat 30px 13px;
+        }
+
+        .list_body ul li a {
+            color: #000;
+        }
+
+        .footer {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 8px auto;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font: 12px arial,宋体,'Hiragino Sans GB','Microsoft Yahei',微软雅黑,宋体,Tahoma,Arial,Helvetica,STHeiti;
+            color: #fff;
+        }
+
+        .footer a {
+            color: #fff;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer span.icp {
+            padding-right: 18px;
+            background: url("images/icp1.png") no-repeat right top;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="header">
+            <div class="mask"></div>
+            <div class="header_content clearfix">
+                <div class="header_menu_left fl">
+                    <a class="clearfix fl" href="javascript:;">
+                        <span class="weather">
+                        <span class="city">上海：</span>
+                        <span><img src="images/sum.png"></span>
+                        <span>&nbsp;33℃</span>
+                        <span class="green">&nbsp;良</span>
+                        <span class="green">&nbsp;76</span>
+                        <span class="border"><img src="images/baidu_header_menu_border.png"></span>
+                        <em class="more_info">更多信息</em>
+                    </span>
+                    </a>
+                    <a class="fl link" href="javascript:;">宝箱</a>
+                    <a class="fl link" href="javascript:;">换肤</a>
+                    <a class="fl link" href="javascript:;">消息</a>
+                </div>
+                <div class="header_menu_right fr">
+                    <a class="fl link" href="javascript:;">新闻</a>
+                    <a class="fl link" href="javascript:;">hao123</a>
+                    <a class="fl link" href="javascript:;">地图</a>
+                    <a class="fl link" href="javascript:;">视频</a>
+                    <a class="fl link" href="javascript:;">贴吧</a>
+                    <a class="fl link" href="javascript:;">yogijiang</a>
+                    <a class="fl link" href="javascript:;">设置</a>
+                    <a class="fl link more" href="javascript:;">更多产品</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="logo">
+                <img src="images/baidu_logo_white.png" width="270" height="129">
+            </div>
+            <div class="search">
+                <form action="http://www.baidu.com" method="get">
+                    <input class="text fl" name="text"><input class="submit fl" type="submit" value="百度一下">
+                </form>
+            </div>
+            <div class="info clearfix">
+                <div class="nav fl">
+                    <div class="mask"></div>
+                    <div class="nav_content">
+                        <ul>
+                            <li><a href="javascript:;">音乐</a></li>
+                            <li class="active"><a href="javascript:;">新闻</a></li>
+                        </ul>
+                        <div class="clearfix">
+                            <a class="settings fl" href="javascript:;">
+                                <img src="images/settings.png" width="18" height="18">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="news fl">
+                    <div class="photo fl">
+                        <div class="big_photo">
+                            <img src="images/slide_show_big.jpg">
+                            <div class="mask"></div>
+                            <div class="txt"><a href="javascript:;">“狮语者”：花16年跟狮子交谈</a></div>
+                        </div>
+                        <div class="small_photo clearfix">
+                            <span class="fl">
+                                <img src="images/slide_show_small.jpg">
+                                <div class="mask"></div>
+                            </span>
+
+                            <span class="fl">
+                                <img src="images/slide_show_small.jpg">
+                                <div class="mask"></div>
+                            </span>
+                            <span class="fl">
+                                <img src="images/slide_show_small.jpg">
+                                <div class="mask"></div>
+                            </span>
+                            <span class="fl">
+                                <img src="images/slide_show_small.jpg">
+                                <div class="mask"></div>
+                            </span>
+                            <span class="fl">
+                                <img src="images/slide_show_small.jpg">
+                                <div class="mask"></div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="list fl">
+                        <div class="list_header clearfix">
+                            <h3 class="fl">搜索风云榜</h3>
+                            <a class="fr" href="javascript:;">换一换</a>
+                        </div>
+                        <div class="list_body">
+                            <ul class="clearfix">
+                                <li class="fl"><a href="javascript:;">p型血赴天津救人</a></li>
+                                <li class="fl"><a href="javascript:;">哈林指甲发黑掉落</a></li>
+                                <li class="fl"><a href="javascript:;">湖南第一寿星</a></li>
+                                <li class="fl"><a href="javascript:;">东莞现镜面人</a></li>
+                                <li class="fl"><a href="javascript:;">买绿萝孵出小蛇</a></li>
+                                <li class="fl"><a href="javascript:;">大妈偷拍女营业员</a></li>
+                                <li class="fl"><a href="javascript:;">广场播不雅视频</a></li>
+                                <li class="fl"><a href="javascript:;">杨可涵追思会举行</a></li>
+                                <li class="fl"><a href="javascript:;">北京地铁靓女撕衣</a></li>
+                                <li class="fl"><a href="javascript:;">芒果台回呛王思聪</a></li>
+                                <li class="fl"><a href="javascript:;">明德中学校长被查</a></li>
+                                <li class="fl"><a href="javascript:;">小三变正宫告性侵</a></li>
+                                <li class="fl"><a href="javascript:;">舒淇拿马卡龙出境</a></li>
+                                <li class="fl"><a href="javascript:;">叶诗文倒数第一</a></li>
+                                <li class="fl"><a href="javascript:;">网友实拍果敢老街</a></li>
+                                <li class="fl"><a href="javascript:;">借200万尽孝</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="javascript:;">设为首页&nbsp;&nbsp;</a>
+            <span>&copy;2015 Baidu&nbsp;&nbsp;</span>
+            <a href="javascript:;">使用百度前必读&nbsp;&nbsp;</a>
+            <a href="javascript:;">意见反馈&nbsp;&nbsp;</a>
+            <span class="icp">京ICP证030173号</span>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

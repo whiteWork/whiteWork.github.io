@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加导航</title>
+    <link rel="stylesheet" href="../../css/bing_nav.css"/>
+    <script>
+        window.onload = function() {
+            /*
+            * 添加导航的思路：
+            *
+            * 点加号弹出窗口
+            * 点弹出窗口里的确定按钮或取消按钮，关闭弹出窗口
+            * 点导航链接的关闭按钮，删除导航
+            * 在弹出窗口中，输入导航的名称和链接，则在原窗口上添加一个a标签
+            *
+            * */
+
+            var oBox = document.getElementsByClassName('box')[0];
+            var aLi = oBox.getElementsByTagName('li');
+            var oAddBox = oBox.getElementsByClassName('addBox')[0];
+            var oAdd = document.getElementById('addBtn');
+            var oCancel = document.getElementById('cancelBtn');
+            var oCurrentLi = null;
+            var oName = document.getElementById('name');
+            var oUrl = document.getElementById('url');
+            var oDel = document.getElementById('')
+
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].onclick = function () {
+                    oCurrentLi = this;
+                    //判断a有没有内容，如果有跳转链接，否则弹出添加导航的窗口
+                    if (this.children[0].innerHTML.length == 0) {
+                        oAddBox.style.display = 'block';
+                        //让弹出窗口以被点的Li为中心对齐
+                        oAddBox.style.left = this.offsetLeft + this.offsetWidth / 2 - oAddBox.offsetWidth / 2 + 'px';
+                        oName.value = '';
+                        oUrl.value = '';
+                    } else {
+
+                    }
+                };
+
+                aLi[i].onmouseover =  function () {
+                    //鼠标滑入时判断a有没有内容，如果有显示删除按钮，否则隐藏
+                    //鼠标滑入，添加hover类
+                    this.className = 'fl hover';
+                    if (this.children[0].innerHTML.length == 0) {
+                        this.children[1].style.display = 'none';
+                    } else {
+                        this.children[1].style.display = 'block';
+                    }
+                };
+
+                aLi[i].onmouseout = function () {
+                    //鼠标滑出时隐藏删除按钮
+                    this.children[1].style.display = 'none';
+                    this.className = 'fl';
+                }
+
+                //点击删除
+                aLi[i].children[1].onclick = function (ev) {
+                    var oEvt = ev || event;
+                    oEvt.cancelBubble = true;
+                    //清空a标签
+                    this.parentNode.children[0].href = "javascript:;";
+                    this.parentNode.children[0].innerHTML = "";
+                    this.parentNode.children[0].className = "before-added";
+                }
+
+            }
+
+            oAdd.onclick = function () {
+                var oName = document.getElementById('name');
+                var oUrl = document.getElementById('url');
+                if (oName.value =='' || oUrl.value == '') {
+                    alert("请输入完整信息！");
+                } else {
+                    oCurrentLi.children[0].href = oUrl.value;
+                    oCurrentLi.children[0].innerHTML = oName.value;
+                    oCurrentLi.children[0].className = "after-added";
+                    oAddBox.style.display = 'none';
+                }
+                oCurrentLi.className = "fl";
+            };
+
+            oCancel.onclick = function () {
+                oAddBox.style.display = 'none';
+                oCurrentLi.className = "fl";
+            };
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul class="clearfix">
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+            <li class="fl">
+                <a href="javascript:;" target="_blank" class="before-added"></a>
+                <i class="delBtn"></i>
+            </li>
+        </ul>
+        <div class="addBox">
+            <div class="name">
+                <label for="name">网站名称：</label>
+                <input type="text" id="name" placeholder="如：必应"/>
+            </div>
+            <div class="url">
+                <label for="url">网站名称：</label>
+                <input type="text" id="url" placeholder="如：cn.bing.com"/>
+            </div>
+            <div class="btngroup">
+                <input type="button" id="addBtn" value="确定"/>
+                <input type="button" id="cancelBtn" value="取消"/>
+            </div>
+            <i class="close_btn"></i>
+        </div>
+    </div>
+</body>
+</html>

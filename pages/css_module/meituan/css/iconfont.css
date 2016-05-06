@@ -1,0 +1,78 @@
+@font-face{
+    font-family:global-iconfont;
+    src:url(../fonts/global-iconfont.eot);
+    src:url(../fonts/global-iconfont.eot?v=a0951762) format("embedded-opentype"),
+        url(../fonts/global-iconfont.woff?v=1069459d) format("woff"),
+        url(../fonts/global-iconfont.ttf?v=487931eb) format("truetype");
+
+    font-weight:400;
+    font-style:normal;
+}
+
+.F-glob{
+    font-family:global-iconfont;
+    font-style:normal;
+    font-weight:400;
+    speak:none;
+    text-decoration:none;
+    -webkit-font-smoothing:antialiased
+}
+
+.F-glob-star-border:before {
+    font-size: 1.1em;
+    content: "\e91b";
+}
+
+.F-glob-star:before {
+    content: "\e91a";
+}
+
+.F-glob-phone:before {
+    content: "\e918";
+}
+
+.F-glob-cart:before {
+    color: #888;
+    content: "\e916";
+}
+
+.F-glob-commitment-retire:before {
+    color: #2bb8aa;
+    content: "\9000";
+}
+
+.F-glob-commitment-free:before {
+    color: #2bb8aa;
+    content: "\e92c";
+}
+
+.F-glob-commitment-expire:before {
+    color: #2bb8aa;
+    content: "\e92a";
+}
+
+.F-glob-caret-right-thin:before {
+    content: "\e907";
+}
+
+.F-glob-hot:before {
+    color: #f1463b;
+    content: "\e91d";
+}
+
+.F-glob-position:before {
+    color: #f1463b;
+    content: "\e91f";
+}
+
+.F-glob-shangquan:before {
+    color: #f1463b;
+    content: "\e921";
+}
+
+
+
+.F-glob-caret-right-small:before {
+    color: #2bb8aa;
+    content: "\203a";
+}

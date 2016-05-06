@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>仿苹果菜单</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+#div1{ position:fixed;bottom:0;left:0;width:100%; text-align:center;}
+#div1 img{width:64px;}
+input{ font-size:30px;width:80px;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	var aImg=oDiv.getElementsByTagName('img');	
+	var aIpt=document.getElementsByTagName('input');
+	
+	document.onmousemove=function(ev){
+		var oEvt=ev||event;
+		for(var i=0;i<aImg.length;i++){
+			//a=img.left-clientX+img.w/2
+			//b=img.top-clientY+img.h/2
+			var a=aImg[i].offsetLeft-oEvt.clientX+aImg[i].offsetWidth/2;
+			var b=aImg[i].offsetTop+oDiv.offsetTop-oEvt.clientY+aImg[i].offsetHeight/2;
+			//c=Math.sqrt(a2+b2)
+			var c=Math.sqrt(a*a+b*b);
+			
+			var dis=c;//到图标的距离
+			//aIpt[i].value=dis.toFixed(2);
+			
+			//计算比值
+			var scale=1-dis/300;	//1----0
+			
+			if(scale<0.5) scale=0.5;//限定比值
+			
+			aImg[i].style.width=128*scale+'px';//使用
+		}	
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<img src="../../images/apple_1.png">
+	<img src="../../images/apple_2.png">
+	<img src="../../images/apple_3.png">
+	<img src="../../images/apple_4.png">
+	<img src="../../images/apple_5.png">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float:left;
+}
+
+.fr {
+    float:right;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.box {
+    width: 310px;
+    height: 364px;
+    margin: 30px 100px;
+    padding: 8px 0 0 10px;
+    background: url("../images/nowtv_box_bg.png") repeat-x;
+}
+.box .playlist{
+    width: 298px;
+    height: 347px;
+    padding: 0 1px;
+    background: #FFFFFF;
+}
+
+.box h3 {
+    height: 32px;
+}
+.box h3 img{
+    height: 100%;
+}
+
+.box .thead {
+    height: 24px;
+}
+.box .thead i{
+    width: 149px;
+    height: 100%;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    background: #847b73;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+}
+.box .thead i.active{
+    color: #313139;
+    background: #efefef;
+}
+
+.box .tbody {
+    height: 270px;
+    padding: 12px 0 0 10px;
+    border-radius: 0 0 6px 6px;
+    background: #efefef;
+}
+.box .tbody .tab-item{
+    display: none;
+}
+
+.box .tbody .tab-item.cur{
+    display: block;
+}
+.box .tbody .tab-item .tools{
+    height: 24px;
+}
+.box .tbody .tab-item .tools .select{
+    position: relative;
+    width: 188px;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 10px;
+    font-size: 12px;
+    color: #5a5a63;
+    border: 1px solid #cecece;
+    border-radius: 4px;
+    background: #ffffff;
+    margin-right: 12px;
+}
+
+.box .tbody .tab-item.favorite .tools .select{
+    width: 128px;
+    margin-right: 80px;
+}
+.box .tbody .tab-item .tools .select .drop{
+    position:absolute;
+    right: 2px;
+    top: 2px;
+    width: 14px;
+    height: 10px;
+    padding: 8px 0 0 7px;
+    background: #f77b00;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.box .tbody .tab-item .tools .select .drop .tri_down{
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    border-top-color: #fff;
+}
+
+.box .tbody .tab-item .tools .search{
+    width: 56px;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 4px;
+    border: 1px solid #cecece;
+    border-radius: 4px;
+    background: #ffffff;
+}
+.box .tbody .tab-item .tools .search i{
+    width: 12px;
+    height: 22px;
+    background: url("../images/nowtv_search_bg.png") no-repeat;
+    margin-right: 2px;
+}
+.box .tbody .tab-item .tools .search input{
+    width: 40px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    border: none;
+    outline: none;
+}
+
+.box .tbody .tab-item .tools .save {
+    width: 60px;
+    height: 18px;
+    line-height: 18px;
+    background: #9c949c;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.box .tab-item .content {
+    position: relative;
+    margin-top: 12px;
+    height: 226px;
+    overflow: hidden;
+}
+.box .tab-item .content ul{
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 263px;
+}
+.box .tab-item .content ul li{
+    height: 22px;
+    line-height: 22px;
+    padding-left: 14px;
+    font-size: 12px;
+    color: #5a5a63;
+    border-top: 1px solid #f7f7f7;
+    border-bottom: 1px solid #cecece;
+}
+.box .tab-item .content ul li.first{
+    border-top: 1px solid #efefef;
+}
+
+.box .tab-item.favorite .content ul li{
+    height: 24px;
+    line-height: 24px;
+    padding-left: 26px;
+    border-top: none;
+    border-bottom: none;
+    background: url("../images/nowtv_li_bg.png") no-repeat 0 4px;
+}
+
+.box .tab-item .content .roller {
+    position:absolute;
+    right: 8px;
+    top: 8px;
+    width: 9px;
+    height: 218px;
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    background: #ded6d6;
+}
+.box .tab-item .content .roller .bar{
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 9px;
+    height: 44px;
+    background: url("../images/nowtv_bar_bg.png") no-repeat;
+    cursor: pointer;
+}
+.box .tab-item .content .roller .arrow-up{
+    position:absolute;
+    left: -1px;
+    bottom: 22px;
+    width: 11px;
+    height: 22px;
+    background: url("../images/up_down_arrow.png") no-repeat 0 -46px;
+    cursor: pointer;
+}
+.box .tab-item .content .roller .arrow-up:hover{
+    background-position:  -11px -46px;
+}
+.box .tab-item .content .roller .arrow-down{
+    position:absolute;
+    left: -1px;
+    bottom: 0;
+    width: 11px;
+    height: 22px;
+    background: url("../images/up_down_arrow.png") no-repeat 0 -69px;
+    cursor: pointer;
+}
+
+.box .tab-item .content .roller .arrow-down:hover{
+    background-position:  -11px -69px;
+}

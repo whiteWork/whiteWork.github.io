@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: green;
+            margin: 100px;
+        }
+
+        #div1 {
+            position:absolute;
+            right: 0;
+            bottom: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            text-align: center;
+            color: #00b38a;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var oDiv1 = document.getElementById('div1');
+
+            oDiv1.onmousedown = function (ev) {
+                var oEvt = ev || event;
+                var disX = oEvt.clientX - oDiv1.offsetLeft;
+                var disY = oEvt.clientY - oDiv1.offsetTop;
+
+                document.onmousemove = function (ev) {
+                    var oEvt = ev || event;
+                    oDiv1.style.left = oEvt.clientX - disX + 'px';
+                    oDiv1.style.top = oEvt.clientY - disY + 'px';
+
+                   var aDiv = document.getElementsByTagName('div');
+
+                    for (var i = 0; i < aDiv.length - 1; i++) {
+                        if (collTest(oDiv1, aDiv[i])) {
+                            aDiv[i].style.background = 'blue';
+                        } else {
+                            aDiv[i].style.background = 'green';
+                        }
+                    }
+
+                };
+
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                    oDiv1.releaseCapture && oDiv1.releaseCapture();
+                };
+
+                oDiv1.setCapture && oDiv1.setCapture();
+                return false;
+            }
+        };
+
+        function collTest(obj1, obj2) {
+            /*
+             * 碰撞检测
+             *
+             * 这些情况没有撞到：r1 < l2 || r2 < l1 || b1 <t2 || b2 < t1
+             * */
+
+            var l1 = obj1.offsetLeft;
+            var r1 = obj1.offsetLeft + obj1.offsetWidth;
+            var t1 = obj1.offsetTop;
+            var b1 = obj1.offsetTop + obj1.offsetHeight;
+
+            var l2 = obj2.offsetLeft;
+            var r2 = obj2.offsetLeft + obj2.offsetWidth;
+            var t2 = obj2.offsetTop;
+            var b2 = obj2.offsetTop + obj2.offsetHeight;
+
+            if (r1 < l2 || r2 < l1 || b1 <t2 || b2 < t1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>拖拽红色物块，如果撞到绿色物块，被撞的绿色物块会变成蓝色</h1>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="div1"></div>
+</body>
+</html>

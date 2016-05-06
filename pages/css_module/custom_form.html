@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义表单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .fl {
+            float:left;
+        }
+
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        h1 {
+            color: #00b38a;
+            margin: 20px 0 0 20px;
+        }
+
+        .user-info {
+            margin: 40px 0 0 100px;
+            width: 449px;
+            height: 425px;
+            padding-top: 13px;
+            background: #313131;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .user-info dt {
+            width: 69px;
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        .user-info .input-text {
+            margin-bottom: 19px;
+        }
+
+        .user-info .input-text dt {
+            height: 12px;
+            line-height: 12px;
+            padding: 11px 0 13px;
+        }
+
+        .user-info .input-text input {
+            width: 294px;
+            height: 36px;
+            border: none;
+            padding-left: 6px;
+            color: #fff;
+            background: url("../../images/user-info-bg.png") no-repeat;
+        }
+
+        .user-info .sex {
+        }
+
+        .user-info .sex dt {
+            height: 34px;
+            line-height: 34px;
+        }
+
+        .user-info .sex dd {
+            padding-left: 5px;
+        }
+
+        .user-info .sex .male, .user-info .sex .female {
+            position: relative;
+            padding: 11px 21px;
+            cursor: pointer;
+        }
+
+        .user-info .sex .male strong, .user-info .sex .female strong {
+            position:absolute;
+            left: 0;
+            top: 9px;
+            width: 17px;
+            height: 17px;
+            background: url("../../images/user-info-bg.png") no-repeat;
+        }
+
+        .user-info .sex .person.active strong {
+            background-position:  -311px -19px;
+        }
+
+        .user-info .sex .person  strong {
+            background-position:  -311px 0;
+        }
+
+        .user-info .area {
+            margin-bottom: 1px;
+        }
+
+        .user-info .area dt {
+            height: 54px;
+            line-height: 54px;
+        }
+
+        .user-info .area dd {
+            padding-left: 5px;
+        }
+
+        .user-info .area dd span {
+            position: relative;
+            height: 12px;
+            line-height: 12px;
+            padding: 21px;
+            cursor: pointer;
+        }
+
+        .user-info .area dd span strong {
+            position:absolute;
+            left: 0;
+            top: 17px;
+            width: 17px;
+            height: 17px;
+            background: url("../../images/user-info-bg.png") no-repeat;
+        }
+
+        .user-info .area dd .active strong {
+            background-position: -311px -62px;
+        }
+
+        .user-info .area dd span strong {
+            background-position: -311px -40px;
+        }
+
+        .user-info .accessory dt {
+            height: 12px;
+            line-height: 12px;
+            padding: 11px 0 5px;
+        }
+
+        .user-info .accessory dd input {
+            height: 28px;
+            line-height: 28px;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+        .user-info .accessory dd .path {
+            width: 150px;
+            margin-right: 3px;
+            background: url("../../images/user-info-bg.png") no-repeat 0 -171px;
+        }
+
+        .user-info .accessory dd .btn {
+            width: 62px;
+            margin-right: 7px;
+            background: url("../../images/user-info-bg.png") no-repeat -151px -171px;
+        }
+
+        .user-info .accessory {
+            margin-bottom: 12px;
+        }
+
+        .user-info .detail dt {
+            height: 12px;
+            line-height: 12px;
+            padding-top: 2px;
+        }
+
+        .user-info .detail dd textarea {
+            width: 306px;
+            height: 88px;
+            border: none;
+            outline: none;
+            resize: none;
+            border-top: 1px solid #151515;
+            border-bottom: 1px solid #505050;
+            color: #fff;
+            background: #2a2a2a;
+        }
+
+        .user-info .detail {
+            margin-bottom: 15px;
+        }
+
+        .user-info .submit dd input {
+            width: 159px;
+            height: 47px;
+            line-height: 47px;
+            text-align: center;
+            border:none;
+            outline: none;
+            background: url("../../images/user-info-bg.png") no-repeat -1px -120px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oMale = document.getElementById("male");
+            var oFemale = document.getElementById("female");
+            var oArea = document.getElementById("area");
+            var aCities = oArea.children;
+
+            oMale.onclick = oFemale.onclick = function () {
+                oMale.className = oMale.className.replace("active", "").replace(/^\s+|\s+$/g, "").replace(/\s+/g, " ");
+                oFemale.className = oFemale.className.replace("active", "").replace(/^\s+|\s+$/g, "").replace(/\s+/g, " ");
+                if (this.tagName != "SPAN") {
+                    this.parentNode.className += " active";
+                } else {
+                    this.className += " active";
+                }
+            };
+
+            for (var i = 0; i < aCities.length; i++) {
+                (function(index) {
+                    aCities[i].onclick = function () {
+                        if (/active/.test(aCities[index].className)) {
+                            aCities[index].className = aCities[index].className.replace("active", "").replace(/^\s+|\s+$/g, "").replace(/\s+/g, " ");
+                        } else {
+                            aCities[index].className += " active";
+                        }
+                    };
+                })(i);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>自定义表单、自定义单选框、自定义复选框</h1>
+    <div class="user-info">
+        <dl class="input-text user clearfix">
+            <dt class="fl">账号：</dt>
+            <dd class="fl">
+                <input type="text" placeholder="请输入用户名！">
+            </dd>
+        </dl>
+        <dl class="input-text password clearfix">
+            <dt class="fl">密码：</dt>
+            <dd class="fl">
+                <input type="password" placeholder="请输入密码！">
+            </dd>
+        </dl>
+        <dl class="sex clearfix">
+            <dt class="fl">性别：</dt>
+            <dd class="fl clearfix">
+                <span class="fl male person" id="male">
+                    男
+                    <strong></strong>
+                </span>
+                <span class="fl female person active" id="female">
+                    女
+                    <strong></strong>
+                </span>
+            </dd>
+        </dl>
+        <dl class="area clearfix">
+            <dt class="fl">地区：</dt>
+            <dd class="fl clearfix" id="area">
+                <span class="fl active">
+                    北京
+                    <strong></strong>
+                </span>
+                <span class="fl active">
+                    上海
+                    <strong></strong>
+                </span>
+                <span class="fl">
+                    武汉
+                    <strong></strong>
+                </span>
+                <span class="fl">
+                    南京
+                    <strong></strong>
+                </span>
+            </dd>
+        </dl>
+        <dl class="accessory clearfix">
+            <dt class="fl">附件：</dt>
+            <dd class="fl clearfix">
+                <input class="fl path" type="text">
+                <input class="fl btn browse" type="button" value="浏览">
+                <input class="fl btn clear" type="button" value="清空">
+            </dd>
+        </dl>
+        <dl class="detail clearfix">
+            <dt class="fl">详情：</dt>
+            <dd class="fl">
+                <textarea></textarea>
+            </dd>
+        </dl>
+        <dl class="submit clearfix">
+            <dt class="fl">&nbsp;</dt>
+            <dd class="fl">
+                <input type="submit" value="提交">
+            </dd>
+        </dl>
+    </div>
+
+</body>
+</html>

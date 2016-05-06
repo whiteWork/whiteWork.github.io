@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chat">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/chat.css"/>
+    <script src="../angular/angular.js"></script>
+    <script src="../angular/angular-cookies.js"></script>
+    <script src="js/chat.js"></script>
+</head>
+<body ng-controller="main">
+    <div class="box clearfix">
+        <div class="fl main">
+            <div class="readarea">
+                <ul>
+                    <li ng-repeat="message in messages" on-finish-render="ngRepeatFinished">
+                        <div class="title">
+                            {{message.username}}
+                            <span>
+                                {{message.post_time}}
+                            </span>
+                        </div>
+                        <p class="msg">
+                            {{message.content}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="sendarea">
+                <textarea name="msg" id="msg" cols="30" rows="10" ng-model="message"></textarea><br>
+                <input type="button" value="发送" ng-click="send()"/>
+            </div>
+        </div>
+        <div class="fr friends">
+            <ul>
+                <li ng-repeat="user in userList">
+                    <img ng-src="images/{{user.face}}.jpg" alt=""/>
+                    <span>{{user.username}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>圆形菜单</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family: "微软雅黑","张海山锐线体简"}
+h1 {
+    padding-top: 30px;
+    padding-left: 180px;
+    color: #00b38a;
+}
+#bBox{ opacity:0;width:400px;height:400px;border:#000 solid 1px; border-radius:50%; position:absolute;left:150px;top:150px;}
+.sBox{width:72px;height:72px;border-radius:50%; position:absolute;left:0;top:0;margin-left:-36px;margin-top:-36px;}
+.sBox img{
+    width: 100%;
+}
+input{
+    position:absolute;left:320px;top:310px; z-index:2;width: 88px;
+	height: 74px;
+	background: url("../../images/circle_plus.png") no-repeat -2px -2px;
+	border-radius: 20px;outline: none;border:none;
+	cursor: pointer;
+}
+</style>
+<script>
+window.onload=function(){
+	var bBox=document.getElementById('bBox');
+	var oBtn=document.getElementById('btn1');
+	var r=bBox.offsetWidth/2;
+    var opened = false;
+	//a=sin(ang)*r	b=cos(ang)*r
+	//sBox.left=bBox.left+r+a	top=bBox.top+r-b;
+	
+	
+	//1.创建一堆，平均分布到大圆上
+	var count=4;	//一圈360	360/5=72	0*72=0	1*72=72	2*72=144 n*360/count
+	for(var i=0;i<count;i++){
+		var sBox=document.createElement('div');
+		sBox.className='sBox';
+        sBox.innerHTML= "<img src='../../images/circle_" + (i + 1) + ".png'> "
+		document.body.appendChild(sBox);
+		//setPos(sBox,i*(360/count));	
+		setPos(sBox,0);		//在90度范围内摆放
+		sBox.rotate=0;	//创建每一个小圆的时候，定义一个js属性，存角度0
+	}
+	
+	//2.添加事件
+	oBtn.onclick=function(){
+		var sBox=document.getElementsByClassName('sBox');
+		this.disabled=true;
+		if(opened){
+			//收
+			for(var i=0;i<sBox.length;i++){
+				//setPos(sBox[i],0);	
+				move(sBox[i],0);	//0==角度
+			}
+			opened = false;
+		}else {
+			//展	
+			for(var i=0;i<sBox.length;i++){
+				//setPos(sBox[i],i*(90/(count-1)));	
+				move(sBox[i],i*(90/(count-1)));
+			}
+			opened = true;
+		}
+	};
+	
+	function move(obj,iTarget){
+		var start=obj.rotate;
+		var dis=iTarget-start;
+		var count=Math.round(700/30);
+		var n=0;
+		
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			n++;
+			var a=1-n/count;
+			var cur=start+dis*(1-a*a*a);
+			setPos(obj,cur)//obj.style.left=?
+			
+			//更新角度属性，以便下start读取
+			obj.rotate=cur;
+			
+			if(n==count){
+				clearInterval(obj.timer);
+				oBtn.disabled=false;
+			}
+		},30);
+	}
+	
+	
+	function setPos(obj,deg){
+		var a=Math.sin(d2a(deg))*r;
+		var b=Math.cos(d2a(deg))*r;
+		obj.style.left=bBox.offsetLeft+r+a+'px';
+		obj.style.top=bBox.offsetTop+r-b+'px';	
+	}
+	
+	function d2a(n){
+		return n*Math.PI/180;	//返回	角度转弧度
+	}
+};
+</script>
+</head>
+
+<body>
+<h1>点击加号，来展开或收缩圆形菜单</h1>
+<input type="button" value="" id="btn1">
+<div id="bBox"></div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .box {
+            position:absolute;
+            left: 30%;
+            top: 20%;
+            width: 400px;
+            height: 300px;
+            background: #cccccc;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .box p {
+            padding-top: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .t {
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 20px;
+            background: #00b38a;
+            z-index: 1;
+            cursor: s-resize;
+        }
+
+        .r {
+            position:absolute;
+            right: 0;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: #00b38a;
+            z-index: 1;
+            cursor: e-resize;
+        }
+
+        .b {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            background: #00b38a;
+            z-index: 1;
+            cursor: s-resize;
+        }
+
+        .l {
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: #00b38a;
+            z-index: 1;
+            cursor: e-resize;
+        }
+
+        .lt {
+            position:absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: lightsalmon;
+            z-index: 2;
+            cursor: nw-resize;
+        }
+
+        .rt {
+            position:absolute;
+            right: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: lightsalmon;
+            z-index: 2;
+            cursor: ne-resize;
+        }
+
+        .rb {
+            position:absolute;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background: lightsalmon;
+            z-index: 2;
+            cursor: se-resize;
+        }
+
+        .lb {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background: lightsalmon;
+            z-index: 2;
+            cursor: sw-resize;
+        }
+
+        .title {
+            position:absolute;
+            left: 0;
+            top: 20px;
+            width: 100%;
+            height: 40px;
+            background: #008177;
+            text-align: center;
+            line-height: 40px;
+            font-size: 30px;
+            color: #fff;
+            cursor: move;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            /*
+             * 拖拽公式：
+             *
+             * 右：newW = oldW + (newX - oldX)
+             * 下：newH = oldH + (newY - oldY)
+             * 左：newW = oldW + (oldX - newX)
+             *     newL = oldL - (oldX - newX)
+             * 上：newH = oldH + (oldY - newY)
+             *     newT = oldT - (oldY - newY)
+             * */
+            var oBox = document.getElementsByClassName('box')[0];
+            var aBar = oBox.children;
+
+            for (var i = 0; i < aBar.length; i++) {
+                drag(aBar[i]);
+            }
+
+            function drag(obj) {
+                obj.onmousedown = function (ev) {
+                    var oEvt = ev || event;
+                    var oldX = oEvt.clientX;
+                    var oldY = oEvt.clientY;
+
+                    var oldW = oBox.offsetWidth;
+                    var oldH = oBox.offsetHeight;
+                    var oldL = oBox.offsetLeft;
+                    var oldT = oBox.offsetTop;
+                    var disX = oldX - oldL;
+                    var disY = oldY - oldT;
+
+                    document.onmousemove = function (ev) {
+                        var oEvt = ev || event;
+                        var newX = oEvt.clientX;
+                        var newY = oEvt.clientY;
+
+                        if (obj.className.indexOf('r') != -1 && obj.className != 'title') {
+                            oBox.style.width = oldW + (newX - oldX) + 'px';
+                        }
+
+                        if (obj.className.indexOf('b') != -1 && obj.className != 'title') {
+                            oBox.style.height = oldH + (newY - oldY) + 'px';
+                        }
+
+                        if (obj.className.indexOf('l') != -1 && obj.className != 'title') {
+                            oBox.style.width = oldW + (oldX - newX) + 'px';
+                            oBox.style.left = oldL - (oldX - newX) + 'px';
+                        }
+
+                        if (obj.className.indexOf('t') != -1 && obj.className != 'title') {
+                            oBox.style.height = oldH + (oldY - newY) + 'px';
+                            oBox.style.top = oldT - (oldY - newY) + 'px';
+                        }
+
+                        if (obj.className.indexOf('title') != -1) {
+                            oBox.style.left = newX - disX + 'px';
+                            oBox.style.top = newY - disY + 'px';
+                        }
+                    };
+
+                    document.onmouseup = function () {
+                        document.onmousemove = document.onmouseup = null;
+                        obj.releaseCapture && obj.releaseCapture();
+                    };
+
+                    obj.setCapture && obj.setCapture();
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="t"></div>
+        <div class="r"></div>
+        <div class="b"></div>
+        <div class="l"></div>
+        <div class="lt"></div>
+        <div class="rt"></div>
+        <div class="rb"></div>
+        <div class="lb"></div>
+        <div class="title">按住我开始拖拽</div>
+        <p>注：拖拽四边和四个角均可改变元素大小</p>
+    </div>
+</body>
+</html>

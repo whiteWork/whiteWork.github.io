@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{ margin:0; padding:0; list-style:none; font-family:"张海山锐线体简"}
+.messQ{}
+.messQ ul li{
+	width:12em;
+	height:12em;
+	margin: 1em;
+	float:left;
+	}
+
+.messQ ul li a{
+	display:block;
+	width:10em;
+	height:10em;
+	padding: 1em;
+	color:#000;
+	text-decoration:none;
+	background:lightcoral;
+	border-radius:0 0 2em 0px;
+	box-shadow: .2em .2em .1em rgba(51,51,51,.3);
+	transition: all .5s;
+	opacity:0;
+    filter: alpha(opacity:0);
+	-webkit-animation: allAMT 1s forwards;
+	}
+.messQ ul li:nth-child(7) {
+	-webkit-animation: tom .5s infinite alternate .5s;
+	}
+.messQ ul li:nth-child(3) a h2{
+	-webkit-animation: flash .2s infinite alternate 1.5s;
+	}
+.messQ ul li:nth-child(2n) a{
+	background:lightgreen;
+	transform: rotate(-3deg);
+	-webkit-animation: allAMT 1s forwards .5s;
+	}
+.messQ ul li:nth-child(3n) a{
+	background: lightblue;
+    transform: rotate(3deg);
+	-webkit-animation: allAMT 1s forwards 1s;
+	}
+.messQ ul li:nth-child(5n) a{
+	background: lightseagreen;
+	transform: rotate(7deg);
+	-webkit-animation: allAMT 1s forwards 1.5s;
+	}
+.messQ ul li a h2{
+	margin-bottom: 1em;
+	}
+.messQ ul li a p{
+	text-indent: 2em;
+	word-break:break-all;
+	}	
+.messQ ul li a:link{
+	background-image: -webkit-radial-gradient(left top,rgba(0,0,0,0),rgba(0,0,0,0) 90%,rgba(0,0,0,1));
+}
+.messQ ul li:hover a,
+.messQ ul li a:focus{
+	transform: rotate(0) scale(1.5,1.5);
+	position:relative;
+	z-index:2;
+	outline:none;
+	}
+/*.messQ ul li:nth-child(7):hover,*/
+/*.messQ ul li:nth-child(3) a:hover h2{*/
+	/*-webkit-animation-play-state:paused;*/
+/*}*/
+    .messQ ul li:hover,
+    .messQ ul li:hover a h2{-webkit-animation:none;}
+@-webkit-keyframes tom{
+        0%{transform:rotate(0deg);}
+        100%{transform:rotate(15deg);}
+    }
+@-webkit-keyframes flash{
+        0%{color:#000}
+        100%{color:#f00}
+    }
+@-webkit-keyframes allAMT{
+        0%{opacity:0;}
+        100%{opacity:1;}
+    }
+
+</style>
+</head>
+
+<body>
+    <div class="messQ">
+        <ul>
+            <li>
+                <a href=”#”>
+                    <h2>覃超：</h2>
+                    <p>最重要的是,你方向明确,你从未停止,你在那一天到来之前,就做足准备。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>李笑来：</h2>
+                    <p>凡是值得做的事情，都值得慢慢做----做很久很久。</p>
+                </a>
+            </li>
+            <li>
+              <a href=”#”>
+                  <h2>甲贺弦之介：</h2>
+                  <p>人类，真是不接触对方就不会了解的生物。</p>
+              </a>
+          </li>
+            <li>
+              <a href=”#”>
+                  <h2>老码农：</h2>
+                  <p>水平的提高是潜移默化的，每天都在进步，而不是一定要突击到满1万个小时产生一个突然的飞跃。</p>
+              </a>
+          </li>
+            <li>
+              <a href=”#”>
+                  <h2>刘未鹏：</h2>
+                  <p> 你的时间就是资源。你投入这些资源来掌握知识。所以到底用来掌握哪些知识是很重要的问题。
+                  </p>
+              </a>
+          </li>
+
+            <li>
+                <a href=”#”>
+                    <h2>覃超：</h2>
+                    <p>最重要的是,你方向明确,你从未停止,你在那一天到来之前,就做足准备。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>李笑来：</h2>
+                    <p>凡是值得做的事情，都值得慢慢做----做很久很久。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>甲贺弦之介：</h2>
+                    <p>人类，真是不接触对方就不会了解的生物。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>老码农：</h2>
+                    <p>水平的提高是潜移默化的，每天都在进步，而不是一定要突击到满1万个小时产生一个突然的飞跃。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>刘未鹏：</h2>
+                    <p> 你的时间就是资源。你投入这些资源来掌握知识。所以到底用来掌握哪些知识是很重要的问题。
+                    </p>
+                </a>
+            </li>
+
+            <li>
+                <a href=”#”>
+                    <h2>覃超：</h2>
+                    <p>最重要的是,你方向明确,你从未停止,你在那一天到来之前,就做足准备。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>李笑来：</h2>
+                    <p>凡是值得做的事情，都值得慢慢做----做很久很久。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>甲贺弦之介：</h2>
+                    <p>人类，真是不接触对方就不会了解的生物。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>老码农：</h2>
+                    <p>水平的提高是潜移默化的，每天都在进步，而不是一定要突击到满1万个小时产生一个突然的飞跃。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>刘未鹏：</h2>
+                    <p> 你的时间就是资源。你投入这些资源来掌握知识。所以到底用来掌握哪些知识是很重要的问题。
+                    </p>
+                </a>
+            </li>
+
+            <li>
+                <a href=”#”>
+                    <h2>覃超：</h2>
+                    <p>最重要的是,你方向明确,你从未停止,你在那一天到来之前,就做足准备。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>李笑来：</h2>
+                    <p>凡是值得做的事情，都值得慢慢做----做很久很久。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>甲贺弦之介：</h2>
+                    <p>人类，真是不接触对方就不会了解的生物。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>老码农：</h2>
+                    <p>水平的提高是潜移默化的，每天都在进步，而不是一定要突击到满1万个小时产生一个突然的飞跃。</p>
+                </a>
+            </li>
+            <li>
+                <a href=”#”>
+                    <h2>刘未鹏：</h2>
+                    <p> 你的时间就是资源。你投入这些资源来掌握知识。所以到底用来掌握哪些知识是很重要的问题。
+                    </p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</body>
+</html>
