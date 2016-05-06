@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="css/mymain.css"/>
 </head>
 <body>
+    <div style="position:fixed; top:200px; right:60px; width:150px;height:50px;border:1px solid #000;">
+        <p id="mingzi" style="width:0px;height:18px;overflow:hidden;">name:孙李强</p>
+        <p id="tel" style="width:0px;height:18px;overflow:hidden;">tel:13683004515</p>
+    </div>
     <div class="box">
         <div class="header">
             <h1 >孙李强作品</h1>
@@ -250,4 +254,41 @@
     </div>
 </body>
 <script src="js/sea.js" data-main="js/index.js"></script>
+<script type="text/javascript">
+    function getStyle(obj,name){
+    
+    if(obj.currentStyle){//ie全系
+        return obj.currentStyle[name];
+    } else {
+        return getComputedStyle(obj,null)[name];//高级浏览器
+    }   
+}
+
+
+
+
+
+    var oMing=document.getElementById('mingzi');
+    var oTel=document.getElementById('tel');
+
+
+    var count=getStyle(oTel,"width");
+    var num=0;
+    show()
+
+    function show(){
+        setInterval(function(){
+
+            if(num==150){
+                num=0
+            }else{
+                num++;
+                count=num+'px';
+                oMing.style.width=num+'px';
+                oTel.style.width=count;
+            }
+        },40);
+    }
+
+</script>
 </html>
