@@ -1,0 +1,63 @@
+/*清除默认样式*/
+body,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol,li,form,input,textarea,th,td{margin:0;padding:0;line-height:100%}
+
+body{font-size:14px; font-family: 'Microsoft Yahei';color:#555;background:#FFF;}
+
+h1,h2,h3,h4,h5,h6{font-size:100%;}/*h标签字体默认大小跟着父级来*/
+
+h2{ font-size:18px;}
+
+h3{ font-size:16px;}
+
+li{list-style:none;}
+
+table{border-collapse:collapse; border-spacing:0;}
+
+textarea{resize:none;}
+
+input{outline:none; border:none; }
+
+i,em{ font-style: normal;}
+
+b,strong{font-weight:normal;}
+
+a{color:#393939; text-decoration:none;}
+
+img{border:0 none;}
+
+/*清除浮动*/
+.clearfix:after{content:"";display:block;clear:both;}
+
+.clearfix{zoom:1;}
+.cl:after{content:"";display:block;clear:both;}
+
+.cl{zoom:1;}
+
+/*通用样式开始*/
+
+.comWidth{width:1000px; margin:0 auto; }
+.fl{ float: left;}
+.fr{ float: right;}
+
+.bdsharebuttonbox{ margin-top:0;}
+
+.bdsharebuttonbox a.bds_more,.bdsharebuttonbox a.bds_qzone,.bdsharebuttonbox a.bds_tqq,.bdsharebuttonbox a.bds_tsina,.bdsharebuttonbox a.bds_weixin {
+	padding-left: 0;
+	width: 24px;
+	height: 24px;
+	background: url('/public/default/images/zuopin/zp_icon.png') no-repeat
+}
+
+.bdsharebuttonbox a.bds_qzone {
+	 background-position:-76px -174px;
+	margin-top:5px;
+}
+.bdsharebuttonbox a.bds_tsina {
+	 background-position:-76px -149px;
+	 margin-top:5px;
+}
+
+.line_ellipsis{overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;}
+
