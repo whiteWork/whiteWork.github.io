@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>大家好，我是孙李强~</title>
+    <style type="text/css">
+        body{
+            height:1000px;
+        }
+        #lotteryContainer {
+            position:relative;
+            width: 300px;
+            height:100px;
+        }
+        #drawPercent {
+            color:#F60;
+        }
+    </style>
+</head>
+<body>
+    <button id="freshBtn">刷新彩票</button><label>已刮开 <span id="drawPercent">0%</span> 区域。</label>
+    <div id="lotteryContainer"></div>
+
+
+
+    <p style="margin-top:80px;">彩票无限刷新</p>
+    <p>感谢你能打开看一下</p>
+    <p>纯文字，截图微信给我2元红包</p>
+    <p>纯数字，截图微信给我2元红包</p>
+    <p>格式“你中了XXXX毛”，截图给我有大红包</p>
+    <script src="js/Lottery.js"></script>
+    <script>
+        window.onload = function () {
+            var lottery = new Lottery('lotteryContainer', '#CCC', 'color', 300, 100, drawPercent);
+            lottery.init('images/guaguale.png', 'image');
+
+            document.getElementById('freshBtn').onclick = function() {
+                drawPercentNode.innerHTML = '0%';
+                lottery.init(getRandomStr(10), 'text');
+            }
+
+            var drawPercentNode = document.getElementById('drawPercent');
+
+            function drawPercent(percent) {
+                drawPercentNode.innerHTML = percent + '%';
+            }
+        }
+
+        function getRandomStr(len) {
+            var text = "";
+            var possible = "你中了123456789厘分毛";
+            for( var i=0; i < len; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        }
+    </script>
+</body>
+</html>
