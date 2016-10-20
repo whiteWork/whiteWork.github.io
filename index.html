@@ -13,48 +13,16 @@
     <script src="js/jquery-1.10.2.js"></script>
 </head>
 <body>
-    <div class="add_address1" id="add_addressBox">
-            <!-- <nav>
-                <div class="nav_left">
-                    <a href="javascript:history.go(-1);" class="go_back"></a>
-                </div>
-                <h2>我的地址</h2>
-            </nav> -->
-                <div class="main">
-                    <div class="address_des">
-                        <ul>
-                            <li class="lbs">
-                                <div id="allmap"></div><i></i><input type="text" id="address" placeholder="11111111111" /><b></b>
-                            </li>
-                            <li>
-                                <input type="text" id="house_number" placeholder=""/><b></b>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="del_address"><a href="javascript:;">删除地址</a></div>
-                </div>
-                <div class="setBtn"><a href="javascript:;" id="sava_address">保存</a></div>
-
-    </div>
-    <div class="commont_popup2">
-        <div class="main">
-            <p class="hint_txt">是否删除收货地址</p>
-            <div class="popup_btn">
-                <a href="javascript:;" class="cancel_btn">取消</a>
-                <a href="javascript:;" class="confirm_btn">确定</a>
-            </div>
-        </div>
-    </div>
-    <div class="commont_popup">
-        <div class="main">
-            <p class="hint_txt">删除成功!</p>
-            <a href="javascript:;" class="confirm_txt">确定</a>
-        </div>
-    </div>
-    <script src="http://api.map.baidu.com/api?v=1.5&ak=EvERZn6ZoRjgOIkORVElG3bWtybQOA9n" type="text/javascript"></script>
+			<div class="pos_header lbs">
+				<p>GPS定位城市</p>
+				<div id="allmap"></div><input type="button" id="address" placeholder="请输入地址" value="正要获取您的位置..." />
+				<input type="hidden" id="address1" value="" />
+			</div>
+  <script src="http://api.map.baidu.com/api?v=1.5&ak=AdHc7b48OpoqvMehQCuNbRPL" type="text/javascript"></script>
     <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
     <script type="text/javascript">
-        var LBS=document.getElementById("address");
+        var LBS1=document.getElementById("address");
+        var oAa=document.getElementById("address1");
         getLocation();
         function getLocation(){
             if(navigator.geolocation){
@@ -80,12 +48,14 @@
             gc.getLocation(point, function(rs){
                 var addComp = rs.addressComponents;
                 if(addComp.province==addComp.city){
-                    LBS.value =  addComp.city +addComp.district +addComp.street + addComp.streetNumber;
-                    localStorage.setItem('address',LBS.value );
+                    LBS1.value = addComp.city ;
+                    localStorage.setItem('address',LBS1.value );
+                    oAa.value=LBS1.value;
 
                 }else{
-                    LBS.value  = addComp.province + addComp.city +addComp.district +addComp.street + addComp.streetNumber;
-                    localStorage.setItem('address',LBS.value );
+                    LBS1.value  = addComp.province + addComp.city ;
+                    localStorage.setItem('address',LBS1.value );
+                    oAa.value=LBS1.value;
 
                 }
             });
@@ -95,21 +65,27 @@
             switch(error.code){
                case 1:
                tishi("位置服务被拒绝,请手动输入",2000);
+               LBS1.value=""
                break;
 
                case 2:
                tishi("暂时获取不到位置信息,请手动输入",2000);
+               LBS1.value=""
                break;
 
                case 3:
                tishi("获取信息超时,请手动输入",2000);
+               LBS1.value=""
                break;
 
                case 4:
                 tishi("未知错误,请手动输入",2000);
+                LBS1.value=""
                break;
             }
         }
+       
+        
     </script>
 </body>
 </html>
