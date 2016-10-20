@@ -1,4 +1,6 @@
-	.header_bg{
+@media (min-width:768px){
+
+   .header_bg{
 		width:100%;
 		background:#B45B3E;
 		position:static;left:0;top:0;
@@ -406,6 +408,12 @@
 .footer .right li{ float:left; margin-left:150px;}
 .footer .right .pic{ width:101px; height:101px; text-align: center; overflow: hidden;}
 .footer .right .text{ width:100px; height:44px; text-align:center; line-height:44px; font-size:16px; color:#FFF}
+}
+@media (max-width:768px){
+    .header_bg{display: none;}
+    .content{display: none;}
+    .footer{display: none;}
+}
 
 
 

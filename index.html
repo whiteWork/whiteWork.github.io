@@ -1,70 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<style>
-body{margin:0;padding:0;background:#E6EAEB;font-family:Arial,'微软雅黑','宋体'}
-.box{display:none;position:relative;margin:96px auto 0;padding:180px 85px 22px;border-radius:10px 10px 0 0;background:#ccc;box-shadow:5px 9px 17px rgba(102,102,102,0.75);
-width:286px;color:#FFF;text-align:center}
-.box p{margin:0}
-.circle{position:absolute;top:-50px;left:111px}
-.circle_blue{stroke-dashoffset:0;stroke-dasharray:735;transition:stroke-dashoffset 1s linear}
-.alert-sec-text{position:absolute;top:11px;left:190px;width:76px;color:#000;font-size:68px}
-.text_font{font-size:34px}
-.alert-body{margin:35px 0}
-.alert-head{color:#242424;font-size:28px}
-.alert-concent{margin:25px 0 14px;color:#7B7B7B;font-size:18px}
-.alert-concent p{line-height:27px; color:red;}
-.alert-btn{display:block;border-radius:10px;background-color:#4AB0F7;height:55px;line-height:55px;width:286px;color:#FFF;font-size:20px;text-decoration:none;letter-spacing:2px}
-.alert-btn:hover{background-color:#6BC2FF}
-.alert-footer{margin:0 auto;height:42px;width:120px}
-.alert-footer-text{float:left;padding:3px 0 0 5px;height:40px;color:#0B85CC;font-size:16px;text-align:left}
-</style>
+    <meta charset="UTF-8">
+    <title>测地址</title>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="sun.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/common.js"></script>
+    <script src="js/move.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
 </head>
-<body style="background:url(images/yujing.jpg);">
-<div id="box" class="box"> 
-	<svg class="circle" width="234" height="234"> 
-		<circle cx="117" cy="117" r="108" fill="#FFF" stroke="#43AEFA" stroke-width="17"></circle>
-		<circle id="circle_blue" class="circle_blue" cx="117" cy="117" r="108" fill="transparent" stroke="#F4F1F1" stroke-width="18" transform="rotate(-90 117 117)"></circle>
-		<text class="text_font" x="82" y="172" fill="#BDBDBD">secs</text>
-	</svg> 
-	<div id="sec_text" class="alert-sec-text">
-    
-    </div>
-	<div class="alert-body"> 
-	<div id="js-alert-head" class="alert-head"></div> 
-	<div class="alert-concent">
-    	 <p>我不会因为没有掌声</p> 
-         <p>而放弃我的梦想</p>
-    </div>
-	<a id="js-alert-btn" class="alert-btn" href="first.html">马上前去欣赏</a>
-	</div> 
-</div>
-<script>
-	function circle(canshu){
-		var oBox=document.getElementById("box");
-		var oContent=document.getElementById("js-alert-head");
-		oBox.style.display="block";
-		oContent.innerHTML=canshu;
-		var t=5;
-		var n=document.getElementById("circle_blue");
-		var oInner=document.getElementById("sec_text");
+<body>
+    <div class="add_address1" id="add_addressBox">
+            <!-- <nav>
+                <div class="nav_left">
+                    <a href="javascript:history.go(-1);" class="go_back"></a>
+                </div>
+                <h2>我的地址</h2>
+            </nav> -->
+                <div class="main">
+                    <div class="address_des">
+                        <ul>
+                            <li class="lbs">
+                                <div id="allmap"></div><i></i><input type="text" id="address" placeholder="" /><b></b>
+                            </li>
+                            <li>
+                                <input type="text" id="house_number" placeholder=""/><b></b>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="del_address"><a href="javascript:;">删除地址</a></div>
+                </div>
+                <div class="setBtn"><a href="javascript:;" id="sava_address">保存</a></div>
 
-		oInner.innerHTML=t;
-		setInterval(function(){
-			if(t==0){
-				document.getElementById("box").style.display="none";
-				window.location.href="first.html";
-			}else{
-				t-=1;
-				document.getElementById("sec_text").innerHTML=t;
-				var e=Math.round(t/5*735);
-				n.style.strokeDashoffset=e-735
-			}
-		},970);
-		
-	}
-</script>
+    </div>
+    <div class="commont_popup2">
+        <div class="main">
+            <p class="hint_txt">是否删除收货地址</p>
+            <div class="popup_btn">
+                <a href="javascript:;" class="cancel_btn">取消</a>
+                <a href="javascript:;" class="confirm_btn">确定</a>
+            </div>
+        </div>
+    </div>
+    <div class="commont_popup">
+        <div class="main">
+            <p class="hint_txt">删除成功!</p>
+            <a href="javascript:;" class="confirm_txt">确定</a>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            var regPhone = /^1[34578][0-9]{9}$/;
+            $('#sava_address').click(function(){
+                if($('#address').val()==""){
+                    tishi('请输入所在位置');
+                }else if($('#address').val()=="正要获取您的位置..."){
+                    tishi('正在获取您的位置，请稍侯再提交');
+
+                }else if($('#house_number').val()==""){
+                    tishi('请输入详细地址');
+
+                }else if($('#user_name').val()==""){
+                    tishi('请输入姓名');
+
+                }else if($('#user_mobile').val()==""||!regPhone.test($('#user_mobile').val())){
+                    tishi('请输入正确的联系方式');
+
+                }else{
+                    var url = "/user/updata_address_pro?id=<?php echo $type['ua_id']?>&t_id=<?php echo $type['t_id']?>&td_id=<?php echo $type['td_id']?>&tdd_id=<?php echo $type['tdd_id']?>";
+                    var data = {
+                        ua_content:$('#address').val(),
+                        ua_number:$('#house_number').val(),
+                        ua_name:$('#user_name').val(),
+                        ua_mobile:$('#user_mobile').val(),
+                        ua_id:$('#user_id').val(),
+                        ua_default_status:1
+                    }
+                    $.post(url,data,function(data){
+                        if(data.ok==1){
+                            window.location.href="/order/xinxi?t_id="+$('#t_id').val()+"&td_id="+$('#td_id').val()+"&tdd_id="+$('#tdd_id').val();
+
+                        }else{
+                            tishi(data.msg);
+                        }
+
+                    });
+                }
+            });
+            $('#set_address').click(function(){
+                if($('#address').val()==""){
+                    tishi('请输入地址');
+                }else if($('#address').val()=="正要获取您的位置..."){
+                    tishi('正在获取您的位置，请稍侯再提交');
+
+                }else if($('#address').val().indexOf("北京")==-1){
+                    tishi('其他地区请等待开通');
+
+                }else if($('#house_number').val()==""){
+                    tishi('请输入您的详细地址');
+                }else if($('#user_name').val()==""){
+                    tishi('请输入您的姓名');
+
+                }else if($('#user_mobile').val()==""||!regPhone.test($('#user_mobile').val())){
+                    tishi('请输入正确的联系方式');
+
+                }else{ 
+                    var url = "/user/add_address";
+                    var data = {
+                        ua_content:$('#address').val(),
+                        ua_number:$('#house_number').val(),
+                        ua_name:$('#user_name').val(),
+                        ua_mobile:$('#user_mobile').val(),
+                        ua_default_status:1
+                    }
+                    $.post(url,data,function(data){
+                        if(data.ok==1){
+                            window.location.href="/user/address"
+
+                        }else{
+                            tishi(data.msg);
+                        }
+                    });
+                } 
+            });
+        });
+
+        $(function(){
+            $('.del_address').click(function(){
+                
+                $('.commont_popup2').show();
+            });
+            $('.commont_popup2 .cancel_btn').click(function(){
+                $('.commont_popup2').hide();
+            });
+            $('.commont_popup2 .confirm_btn').click(function(){
+                var url = "/order/del_address";
+                var data = {
+                    ua_id:$('#user_id').val()
+                };
+                $.post(url,data,function(data){
+                    if(data.ok==1){
+                        window.location.href="/order/address"
+                    }else{
+                        tishi(data.msg);
+                    }
+                });
+            });
+        });
+
+        $(function(){
+            $('#add_addressBox .address_des li b').click(function(){
+                $(this).parents('li').find('input').val('');
+            });
+
+        });
+    </script>
+    <script src="http://api.map.baidu.com/api?v=1.5&ak=AdHc7b48OpoqvMehQCuNbRPL" type="text/javascript"></script>
+    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+    <script type="text/javascript">
+        var LBS=document.getElementById("address");
+        getLocation();
+        function getLocation(){
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition,onError);
+            }else{
+                tishi("您的浏览器不支持地理定位");
+            }
+        }
+        function showPosition(position){
+            lat=position.coords.latitude;
+            lon=position.coords.longitude;
+            var gpsPoint  = new BMap.Point(lon, lat); 
+            var map = new BMap.Map("allmap");            // 创建Map实例
+            map.centerAndZoom(gpsPoint ,15);  
+            map.addControl(new BMap.NavigationControl());
+            setTimeout(function(){
+                 BMap.Convertor.translate(gpsPoint ,0,translateCallback); 
+            }, 1000);
+        }
+        translateCallback = function (point){
+            var marker = new BMap.Marker(point);
+            var gc = new BMap.Geocoder();
+            gc.getLocation(point, function(rs){
+                var addComp = rs.addressComponents;
+                if(addComp.province==addComp.city){
+                    LBS.value =  addComp.city +addComp.district +addComp.street + addComp.streetNumber;
+                    localStorage.setItem('address',LBS.value );
+
+                }else{
+                    LBS.value  = addComp.province + addComp.city +addComp.district +addComp.street + addComp.streetNumber;
+                    localStorage.setItem('address',LBS.value );
+
+                }
+            });
+        }
+
+        function onError(error){
+            switch(error.code){
+               case 1:
+               tishi("位置服务被拒绝,请手动输入",2000);
+               LBS.value=""
+               break;
+
+               case 2:
+               tishi("暂时获取不到位置信息,请手动输入",2000);
+               LBS.value=""
+               break;
+
+               case 3:
+               tishi("获取信息超时,请手动输入",2000);
+               LBS.value=""
+               break;
+
+               case 4:
+                tishi("未知错误,请手动输入",2000);
+                LBS.value=""
+               break;
+            }
+        }
+    </script>
 </body>
 </html>
-<script>circle('thank you for your visit');</script>

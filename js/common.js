@@ -73,3 +73,21 @@ function toDou(iNum){
 		return iNum;
 	}
 }
+function tishi(txt,time,fn){
+	var oDiv = document.createElement('div');
+	time = time||3000;
+	oDiv.id='alertBox';
+	document.body.appendChild(oDiv);
+	$(oDiv).html(txt).css({
+        'bottom':'100px',
+        'opacity':1,
+    })
+    setTimeout(function(){
+    	move(oDiv,{bottom:60,opacity:0},{duration:600,complete:function(){
+    		document.body.removeChild(oDiv);
+    		fn&&fn();
+    	}})
+    }, time);
+}
+
+
