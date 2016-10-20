@@ -24,7 +24,7 @@
                     <div class="address_des">
                         <ul>
                             <li class="lbs">
-                                <div id="allmap"></div><i></i><input type="text" id="address" placeholder="" /><b></b>
+                                <div id="allmap"></div><i></i><input type="text" id="address" placeholder="11111111111" /><b></b>
                             </li>
                             <li>
                                 <input type="text" id="house_number" placeholder=""/><b></b>
@@ -51,114 +51,7 @@
             <a href="javascript:;" class="confirm_txt">确定</a>
         </div>
     </div>
-    <script>
-        $(function(){
-            var regPhone = /^1[34578][0-9]{9}$/;
-            $('#sava_address').click(function(){
-                if($('#address').val()==""){
-                    tishi('请输入所在位置');
-                }else if($('#address').val()=="正要获取您的位置..."){
-                    tishi('正在获取您的位置，请稍侯再提交');
-
-                }else if($('#house_number').val()==""){
-                    tishi('请输入详细地址');
-
-                }else if($('#user_name').val()==""){
-                    tishi('请输入姓名');
-
-                }else if($('#user_mobile').val()==""||!regPhone.test($('#user_mobile').val())){
-                    tishi('请输入正确的联系方式');
-
-                }else{
-                    var url = "/user/updata_address_pro?id=<?php echo $type['ua_id']?>&t_id=<?php echo $type['t_id']?>&td_id=<?php echo $type['td_id']?>&tdd_id=<?php echo $type['tdd_id']?>";
-                    var data = {
-                        ua_content:$('#address').val(),
-                        ua_number:$('#house_number').val(),
-                        ua_name:$('#user_name').val(),
-                        ua_mobile:$('#user_mobile').val(),
-                        ua_id:$('#user_id').val(),
-                        ua_default_status:1
-                    }
-                    $.post(url,data,function(data){
-                        if(data.ok==1){
-                            window.location.href="/order/xinxi?t_id="+$('#t_id').val()+"&td_id="+$('#td_id').val()+"&tdd_id="+$('#tdd_id').val();
-
-                        }else{
-                            tishi(data.msg);
-                        }
-
-                    });
-                }
-            });
-            $('#set_address').click(function(){
-                if($('#address').val()==""){
-                    tishi('请输入地址');
-                }else if($('#address').val()=="正要获取您的位置..."){
-                    tishi('正在获取您的位置，请稍侯再提交');
-
-                }else if($('#address').val().indexOf("北京")==-1){
-                    tishi('其他地区请等待开通');
-
-                }else if($('#house_number').val()==""){
-                    tishi('请输入您的详细地址');
-                }else if($('#user_name').val()==""){
-                    tishi('请输入您的姓名');
-
-                }else if($('#user_mobile').val()==""||!regPhone.test($('#user_mobile').val())){
-                    tishi('请输入正确的联系方式');
-
-                }else{ 
-                    var url = "/user/add_address";
-                    var data = {
-                        ua_content:$('#address').val(),
-                        ua_number:$('#house_number').val(),
-                        ua_name:$('#user_name').val(),
-                        ua_mobile:$('#user_mobile').val(),
-                        ua_default_status:1
-                    }
-                    $.post(url,data,function(data){
-                        if(data.ok==1){
-                            window.location.href="/user/address"
-
-                        }else{
-                            tishi(data.msg);
-                        }
-                    });
-                } 
-            });
-        });
-
-        $(function(){
-            $('.del_address').click(function(){
-                
-                $('.commont_popup2').show();
-            });
-            $('.commont_popup2 .cancel_btn').click(function(){
-                $('.commont_popup2').hide();
-            });
-            $('.commont_popup2 .confirm_btn').click(function(){
-                var url = "/order/del_address";
-                var data = {
-                    ua_id:$('#user_id').val()
-                };
-                $.post(url,data,function(data){
-                    if(data.ok==1){
-                        window.location.href="/order/address"
-                    }else{
-                        tishi(data.msg);
-                    }
-                });
-            });
-        });
-
-        $(function(){
-            $('#add_addressBox .address_des li b').click(function(){
-                $(this).parents('li').find('input').val('');
-            });
-
-        });
-    </script>
-    <script src="http://api.map.baidu.com/api?v=1.5&ak=AdHc7b48OpoqvMehQCuNbRPL" type="text/javascript"></script>
+    <script src="http://api.map.baidu.com/api?v=1.5&ak=EvERZn6ZoRjgOIkORVElG3bWtybQOA9n" type="text/javascript"></script>
     <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
     <script type="text/javascript">
         var LBS=document.getElementById("address");
@@ -202,22 +95,18 @@
             switch(error.code){
                case 1:
                tishi("位置服务被拒绝,请手动输入",2000);
-               LBS.value=""
                break;
 
                case 2:
                tishi("暂时获取不到位置信息,请手动输入",2000);
-               LBS.value=""
                break;
 
                case 3:
                tishi("获取信息超时,请手动输入",2000);
-               LBS.value=""
                break;
 
                case 4:
                 tishi("未知错误,请手动输入",2000);
-                LBS.value=""
                break;
             }
         }
