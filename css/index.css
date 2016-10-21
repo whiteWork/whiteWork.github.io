@@ -408,12 +408,13 @@
 .footer .right li{ float:left; margin-left:150px;}
 .footer .right .pic{ width:101px; height:101px; text-align: center; overflow: hidden;}
 .footer .right .text{ width:100px; height:44px; text-align:center; line-height:44px; font-size:16px; color:#FFF}
+.m_zhan{display: none;}
 }
 @media (max-width:768px){
     .header_bg{display: none;}
     .content{display: none;}
     .footer{display: none;}
-    .m_zhan{    width: 100%;height:auto;background:#ccc;overflow: hidden;padding-bottom: 100px;}
+    .m_zhan{    width: 100%;height:auto;background:#ccc;overflow: hidden;padding-bottom: 100px;display: block;}
     html, body {
         position: relative;
         height: 100%;
