@@ -2,90 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>测地址</title>
+    <title>给我来杯咖啡，我要加班</title>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="sun.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css" />
+	<link rel="stylesheet" href="css/animate.min.css" />
+	<link rel="stylesheet" href="css/index.css">
     <script src="js/common.js"></script>
     <script src="js/move.js"></script>
     <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/swiper.min.js"></script>
+	<script src="js/swiper.animate.min.js"></script>
+	<script src="js/sy.js"></script>
 </head>
 <body>
-			<div class="pos_header lbs">
-				<p>GPS定位城市</p>
-				<div id="allmap"></div><input type="button" id="address" placeholder="请输入地址" value="正要获取您的位置..." />
-				<input type="hidden" id="address1" value="" />
-			</div>
-  <script src="http://api.map.baidu.com/api?v=1.5&ak=AdHc7b48OpoqvMehQCuNbRPL" type="text/javascript"></script>
-    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
-    <script type="text/javascript">
-        var LBS1=document.getElementById("address");
-        var oAa=document.getElementById("address1");
-        getLocation();
-        function getLocation(){
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(showPosition,onError);
-            }else{
-                tishi("您的浏览器不支持地理定位");
-            }
+<div class="m_zhan">
+	<div class="m_header">
+		<div class="swiper-container">
+		<!-- Swiper -->
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide" style="background-image:url(images/basball.jpg); background-size:100%;"></div>
+	            <div class="swiper-slide" style="background-image:url(images/ftball.jpg); background-size:100%;"></div>
+	            <div class="swiper-slide" style="background-image:url(images/wang.jpg); background-size:100%;"></div>
+	            <div class="swiper-slide" style="background-image:url(images/aoti.jpg); background-size:100%;"></div>
+	        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination" style="display:none;"></div>
+    </div>
+	</div>
+	<div class="m_content"></div>
+	<div class="m_footer"></div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        effect: 'cube',
+        loop: true,
+        autoplay:4500,
+        paginationType:'fraction',
+        grabCursor: true,
+        cube: {
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            shadowScale: 0.94
         }
-        function showPosition(position){
-            lat=position.coords.latitude;
-            lon=position.coords.longitude;
-            var gpsPoint  = new BMap.Point(lon, lat); 
-            var map = new BMap.Map("allmap");            // 创建Map实例
-            map.centerAndZoom(gpsPoint ,15);  
-            map.addControl(new BMap.NavigationControl());
-            setTimeout(function(){
-                 BMap.Convertor.translate(gpsPoint ,0,translateCallback); 
-            }, 1000);
-        }
-        translateCallback = function (point){
-            var marker = new BMap.Marker(point);
-            var gc = new BMap.Geocoder();
-            gc.getLocation(point, function(rs){
-                var addComp = rs.addressComponents;
-                if(addComp.province==addComp.city){
-                    LBS1.value = addComp.city ;
-                    localStorage.setItem('address',LBS1.value );
-                    oAa.value=LBS1.value;
-
-                }else{
-                    LBS1.value  = addComp.province + addComp.city ;
-                    localStorage.setItem('address',LBS1.value );
-                    oAa.value=LBS1.value;
-
-                }
-            });
-        }
-
-        function onError(error){
-            switch(error.code){
-               case 1:
-               tishi("位置服务被拒绝,请手动输入",2000);
-               LBS1.value=""
-               break;
-
-               case 2:
-               tishi("暂时获取不到位置信息,请手动输入",2000);
-               LBS1.value=""
-               break;
-
-               case 3:
-               tishi("获取信息超时,请手动输入",2000);
-               LBS1.value=""
-               break;
-
-               case 4:
-                tishi("未知错误,请手动输入",2000);
-                LBS1.value=""
-               break;
-            }
-        }
-       
-        
-    </script>
+    });
+</script>
 </body>
 </html>
