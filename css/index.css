@@ -425,7 +425,15 @@
         background-position: center;
         background-size: cover;
     }
-}
+
+.m_content .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 150px;
+        height: 180px;
+
+    }
+
 
 
 

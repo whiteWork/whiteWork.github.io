@@ -23,7 +23,7 @@
 		<div class="swiper-container">
 		<!-- Swiper -->
 	        <div class="swiper-wrapper">
-	            <div class="swiper-slide" style="background-image:url(images/basball.jpg); background-size:100%;"></div>
+	            <div class="swiper-slide" style="background-image:url(images/basball.jpg); background-size:100%;"><a href="https://www.baidu.com"></a></div>
 	            <div class="swiper-slide" style="background-image:url(images/ftball.jpg); background-size:100%;"></div>
 	            <div class="swiper-slide" style="background-image:url(images/wang.jpg); background-size:100%;"></div>
 	            <div class="swiper-slide" style="background-image:url(images/aoti.jpg); background-size:100%;"></div>
@@ -32,7 +32,26 @@
         <div class="swiper-pagination" style="display:none;"></div>
     </div>
 	</div>
-	<div class="m_content"></div>
+	<div class="m_content">
+        <div class="swiper-container1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url(images/xz1.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz2.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz3.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz4.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz5.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz6.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz7.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz8.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz9.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz10.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz11.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(images/xz12.jpg)"></div>
+            </div>
+        <!-- Add Pagination -->
+            <div class="swiper-pagination1" style="display:none;"></div>
+        </div>
+    </div>
 	<div class="m_footer"></div>
 </div>
 <script>
@@ -41,6 +60,7 @@
         effect: 'cube',
         loop: true,
         autoplay:4500,
+        autoplayDisableOnInteraction:false,
         paginationType:'fraction',
         grabCursor: true,
         cube: {
@@ -48,6 +68,21 @@
             slideShadows: true,
             shadowOffset: 20,
             shadowScale: 0.94
+        }
+    });
+    var swiper = new Swiper('.swiper-container1', {
+        pagination: '.swiper-pagination1',
+        effect: 'coverflow',
+        grabCursor: true,
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflow: {
+            rotate: 0,
+            stretch: 0,
+            depth: 500,
+            modifier: 1,
+            slideShadows : true
         }
     });
 </script>
