@@ -411,6 +411,8 @@
 .m_zhan{display: none;}
 }
 @media (max-width:768px){
+    #box{display: none;}
+    #sec_text{display: none;}
     .header_bg{display: none;}
     .content{display: none;}
     .footer{display: none;}
