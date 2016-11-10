@@ -16,50 +16,145 @@
     <script src="js/swiper.min.js"></script>
     <script src="js/swiper.animate.min.js"></script>
     <script src="js/sy.js"></script>
-<div class="m_zhan">
-    <div class="m_tw">
-        <p>小时候我最喜欢看的动画片：</p>
-    </div>
-    <div class="m_header">
-        <div class="swiper-container" id="swiper-container2">
-        <!-- Swiper -->
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url(images/basball.jpg); background-size:100%;"><a href="https://www.baidu.com"></a></div>
-                <div class="swiper-slide" style="background-image:url(images/ftball.jpg); background-size:100%;"></div>
-                <div class="swiper-slide" style="background-image:url(images/wang.jpg); background-size:100%;"></div>
-                <div class="swiper-slide" style="background-image:url(images/aoti.jpg); background-size:100%;"></div>
+    <!--<script src="js/anna.js"></script>-->
+    
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+.swiper-slide{
+    width:100%;
+    height:100%;
+    background:url(upload/bg.jpg) no-repeat left top;
+    background-size:100% 100%;
+    position: relative;
+
+}
+    .swiper-container-v {
+        background: #eee;
+    }
+    @-webkit-keyframes fadeInRight{0%{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}100%{opacity:1;transform:none}}@keyframes fadeInRight{0%{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @-webkit-keyframes fadeInLeft{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}100%{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInLeft{0%{opacity:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    .element-box{}
+    #swiper-container1 .swiper-slide{    background-position: center;
+    background-size: cover;
+    width: 150px;
+    height: 180px;}
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container swiper-container-h">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(images/banner_05.jpg);">
+                <span class="pa ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".5s" swiper-animate-delay="0s" style="position: absolute;width:0.8rem; height:0.2rem; left: 1rem; top: 3.5rem;  display: inline-block;color:#000;font-size:.16rem;">姓名：</span>
+                <span class="pa ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay=".5s" style="position: absolute;width:1rem; height:0.2rem; right: 1rem; top: 3.5rem;  display: inline-block;color:#000;font-size:.16rem;">孙志勇</span>
+                <span class="pa ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".5s" swiper-animate-delay="1s" style="position: absolute;width:0.8rem; height:0.2rem; left: .69rem; top: 3.9rem;  display: inline-block;color:#000;font-size:.16rem;">联系方式：</span>
+                <span class="pa ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".5s" swiper-animate-delay="1.5s" style="position: absolute;width:0.8rem; height:0.2rem; right: 1.2rem; top: 3.9rem;  display: inline-block;color:#000;font-size:.16rem;"><a href="tel:15110046580" style="color:#000">15110046580</a></span>
+                <span class="pa ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".5s" swiper-animate-delay="2s" style="position: absolute;width:0.8rem; height:0.2rem; left: .69rem; top: 4.3rem;  display: inline-block;color:#000;font-size:.16rem;">职位概述：</span>
+                <span class="pa ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".5s" swiper-animate-delay="2.5s" style="position: absolute;width:0.8rem; height:0.2rem; right: 1.18rem; top: 4.3rem;  display: inline-block;color:#000;font-size:.16rem;">前端工程师</span>
+                <img class="pa ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0s"  src="images/szy.png" style="width: 2.25rem; height: 1.675rem;position: absolute; bottom: 0.2rem;right:0.2rem;border-radius:0.5rem 0.5rem 0 1.0rem" alt="" />
             </div>
-        <!-- Add Pagination -->
-            <div class="swiper-pagination" style="display:none;"></div>
-        </div>
-    </div>
-    <div class="m_tw">
-        <p>十二生肖：</p>
-    </div>
-    <div class="m_content">
-        <div class="swiper-container1">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url(images/xz1.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz2.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz3.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz4.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz5.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz6.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz7.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz8.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz9.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz10.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz11.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz12.jpg)"></div>
+            <div class="swiper-slide">
+                <div class="swiper-container" id="swiper-container2">
+                <!-- Swiper -->
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image:url(images/basball.jpg); background-size:100%;"><a href="https://www.baidu.com"></a></div>
+                        <div class="swiper-slide" style="background-image:url(images/ftball.jpg); background-size:100%;"></div>
+                        <div class="swiper-slide" style="background-image:url(images/wang.jpg); background-size:100%;"></div>
+                        <div class="swiper-slide" style="background-image:url(images/aoti.jpg); background-size:100%;"></div>
+                    </div>
+                <!-- Add Pagination -->
+                    <div class="swiper-pagination" style="display:none;"></div>
+                </div>
+                
             </div>
-        <!-- Add Pagination -->
-            <div class="swiper-pagination1" style="display:none;"></div>
+            <div class="swiper-slide">
+                <div class="swiper-container1" id="swiper-container1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image:url(images/xz1.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz2.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz3.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz4.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz5.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz6.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz7.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz8.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz9.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz10.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz11.jpg)"></div>
+                        <div class="swiper-slide" style="background-image:url(images/xz12.jpg)"></div>
+                    </div>
+                <!-- Add Pagination -->
+                    <div class="swiper-pagination1" style="display:none;"></div>
+                </div>
+            </div>
+            <div class="swiper-slide  swiper-slide2">
+            </div>
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-h"></div>
     </div>
-    <div class="m_footer"></div>
-</div>
-<script>
-    var swiper1 = new Swiper('.swiper-container', {
+
+    <!-- Swiper JS -->
+    
+
+    <!-- Initialize Swiper -->
+    <script>
+    scaleW=window.innerWidth/320;
+    scaleH=window.innerHeight/480;
+    var resizes = document.querySelectorAll('.resize');
+        for (var j=0; j<resizes.length; j++) {
+        resizes[j].style.width=parseInt(resizes[j].style.width)*scaleW+'px';
+        resizes[j].style.height=parseInt(resizes[j].style.height)*scaleH+'px';
+        resizes[j].style.top=parseInt(resizes[j].style.top)*scaleH+'px';
+        resizes[j].style.left=parseInt(resizes[j].style.left)*scaleW+'px'; 
+    }
+    var swiperH = new Swiper('.swiper-container-h', {
+        pagination: '.swiper-pagination-h',
+        paginationClickable: true,
+        direction: 'vertical',//垂直还是水平  horizontal（水平运动）
+        spaceBetween: 10,//间距
+        loop: true,
+        //循环
+        autoHeight: true,
+        freeMode : false,//若为true则是自由模式，根据用户指头走
+        freeModeFluid : true,//若为true，释放滑块之后仍会滑动一点。
+        //centeredSlides: true,
+        //autoplay: 4500,自动播放
+        //autoplayDisableOnInteraction: false   如果设置为false，用户操作swiper之后自动切换不会停止，每次都会重新启动autoplay
+        moveStartThreshold : 5,//拖动的临界值（单位为px），如果触摸距离小于该值滑块不会被拖动。
+        paginationType: 'progress', //bullets(圆点）  fraction（1/4）  progress（进度条）
+        onInit: function(swiper){
+            swiperAnimateCache(swiper);
+            swiperAnimate(swiper);
+        },
+        onSlideChangeEnd: function(swiper){
+            swiperAnimate(swiper);
+        },
+        onTransitionEnd: function(swiper){
+            swiperAnimate(swiper);
+        }
+
+
+
+    });
+    var swiper1 = new Swiper('#swiper-container2', {
         pagination: '.swiper-pagination',
         effect: 'cube',
         loop: true,
@@ -71,14 +166,7 @@
             shadow: false,
         }
     });
-    setInterval(play,4100);
-
-    function play(){
-        $("#swiper-container2").removeClass('bounceOut').addClass('bounceIn');
-        setTimeout(function(){swiper1.slideNext();},800)
-        setTimeout(function(){$("#swiper-container2").removeClass('bounceIn').addClass('bounceOut')},140);
-    }
-    var swiper = new Swiper('.swiper-container1', {
+    var swiper = new Swiper('#swiper-container1', {
         pagination: '.swiper-pagination1',
         effect: 'coverflow',
         grabCursor: true,
@@ -93,6 +181,9 @@
             slideShadows : true
         }
     });
-</script>
+
+    </script>
+
+
 </body>
 </html>
