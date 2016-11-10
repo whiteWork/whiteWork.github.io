@@ -47,90 +47,14 @@ width:286px;color:#FFF;text-align:center}
     <div class="alert-body"> 
     <div id="js-alert-head" class="alert-head"></div> 
     <div class="alert-concent">
-         <p>我不会因为没有掌声</p> 
+         <p>我不会因为没有掌声</p>
          <p>而放弃我的梦想</p>
     </div>
     <a id="js-alert-btn" class="alert-btn" href="first.html">马上前去欣赏</a>
     </div> 
 </div>
-<div class="m_zhan">
-    <div class="m_tw">
-        <p>小时候我最喜欢看的动画片：</p>
-    </div>
-	<div class="m_header">
-		<div class="swiper-container" id="swiper-container2">
-		<!-- Swiper -->
-	        <div class="swiper-wrapper">
-	            <div class="swiper-slide" style="background-image:url(images/basball.jpg); background-size:100%;"><a href="https://www.baidu.com"></a></div>
-	            <div class="swiper-slide" style="background-image:url(images/ftball.jpg); background-size:100%;"></div>
-	            <div class="swiper-slide" style="background-image:url(images/wang.jpg); background-size:100%;"></div>
-	            <div class="swiper-slide" style="background-image:url(images/aoti.jpg); background-size:100%;"></div>
-	        </div>
-        <!-- Add Pagination -->
-            <div class="swiper-pagination" style="display:none;"></div>
-        </div>
-	</div>
-    <div class="m_tw">
-        <p>十二生肖：</p>
-    </div>
-	<div class="m_content">
-        <div class="swiper-container1">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url(images/xz1.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz2.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz3.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz4.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz5.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz6.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz7.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz8.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz9.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz10.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz11.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(images/xz12.jpg)"></div>
-            </div>
-        <!-- Add Pagination -->
-            <div class="swiper-pagination1" style="display:none;"></div>
-        </div>
-    </div>
-	<div class="m_footer"></div>
-</div>
-<script>
-    var swiper1 = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        effect: 'cube',
-        loop: true,
-        //autoplay:4500,
-        autoplayDisableOnInteraction:false,
-        paginationType:'fraction',
-        grabCursor: true,
-        cube: {
-            shadow: false,
-        }
-    });
-    setInterval(play,4100);
 
-    function play(){
-        $("#swiper-container2").removeClass('bounceOut').addClass('bounceIn');
-        setTimeout(function(){swiper1.slideNext();},800)
-        setTimeout(function(){$("#swiper-container2").removeClass('bounceIn').addClass('bounceOut')},140);
-    }
-    var swiper = new Swiper('.swiper-container1', {
-        pagination: '.swiper-pagination1',
-        effect: 'coverflow',
-        grabCursor: true,
-        loop: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflow: {
-            rotate: 0,
-            stretch: 0,
-            depth: 500,
-            modifier: 1,
-            slideShadows : true
-        }
-    });
-</script>
+
 <script>
     function circle(canshu){
         var oBox=document.getElementById("box");
@@ -143,7 +67,7 @@ width:286px;color:#FFF;text-align:center}
 
         oInner.innerHTML=t;
         if($(window).width()<=500){
-            alert('移动设备浏览')
+            window.location.href="https://whiteWork.github.io/ydindex.html"
         }else{
             setInterval(function(){
                 if(t==0){
